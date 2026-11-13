@@ -1,0 +1,7 @@
+{
+  "url": "https://api.worldbank.org/v2/country?format=json&per_page=2000&page=1",
+  "retrieved_utc": "2026-09-21T19:50:39.698981+00:00",
+  "sha256": "dd88451471bb2daa5a000c27d32d7c77860ce48b8aad0efdddf87237acf30035",
+  "bytes": 113591,
+  "path": "data/raw/countries_p1.json"
+}

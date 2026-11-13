@@ -1,0 +1,139 @@
+{
+  "raw_rows": 7161,
+  "economies": 217,
+  "missing": {
+    "population": 0,
+    "age_0_14": 0,
+    "age_15_64": 0,
+    "age_65_plus": 0,
+    "fertility": 0,
+    "gdp_ppp": 749,
+    "lfpr": 994,
+    "employment": 994
+  },
+  "max_relative_master_vs_raw": {
+    "population": 0,
+    "age_0_14": 4.319389157313302e-12,
+    "age_15_64": 1.0441562048936705e-12,
+    "age_65_plus": 4.913761118035453e-12,
+    "fertility": 0,
+    "gdp_ppp": 4.950854353644599e-12,
+    "lfpr": 0,
+    "employment": 0
+  },
+  "2023_samples": {
+    "population": 217,
+    "age_0_14": 217,
+    "age_15_64": 217,
+    "age_65_plus": 217,
+    "fertility": 217,
+    "gdp_ppp": 197,
+    "lfpr": 184,
+    "employment": 184
+  },
+  "vn": {
+    "1991": {
+      "population": 66891775,
+      "age_0_14": 38.1034985242954,
+      "age_15_64": 56.4081712587235,
+      "age_65_plus": 5.48833021698109,
+      "fertility": 3.524,
+      "gdp_ppp": 2560.84383496164,
+      "lfpr": 78.062,
+      "employment": 76.391
+    },
+    "2000": {
+      "population": 77154011,
+      "age_0_14": 31.4961702476892,
+      "age_15_64": 62.5196074544952,
+      "age_65_plus": 5.98422229781561,
+      "fertility": 2.028,
+      "gdp_ppp": 4349.22348751462,
+      "lfpr": 73.393,
+      "employment": 71.734
+    },
+    "2010": {
+      "population": 87455152,
+      "age_0_14": 24.5835209604548,
+      "age_15_64": 69.3695865360201,
+      "age_65_plus": 6.04689250352508,
+      "fertility": 1.906,
+      "gdp_ppp": 7274.73310698016,
+      "lfpr": 76.268,
+      "employment": 75.418
+    },
+    "2012": {
+      "population": 89510356,
+      "age_0_14": 24.0066178711579,
+      "age_15_64": 69.9019824583313,
+      "age_65_plus": 6.09139967051075,
+      "fertility": 1.967,
+      "gdp_ppp": 7979.86828926858,
+      "lfpr": 76.323,
+      "employment": 75.539
+    },
+    "2023": {
+      "population": 100352192,
+      "age_0_14": 23.6058472126142,
+      "age_15_64": 67.7729868011901,
+      "age_65_plus": 8.62116598619573,
+      "fertility": 1.913,
+      "gdp_ppp": 13534.7997843016,
+      "lfpr": 73.545,
+      "employment": 72.335
+    }
+  },
+  "suggested_insights": {
+    "aging_pp_2010_2023": 2.574273482670651,
+    "fraction_total_aging_pp_after2010": 0.8217071280809547,
+    "older_pop_increase": 4980287.54310583,
+    "accounting_population_component_shapley": 2360548.133091066,
+    "accounting_share_component_shapley": 2619739.410014765,
+    "working_age_decline_since2012": -2.1289956571412034
+  },
+  "benchmark": {
+    "8": {
+      "eligible": 38,
+      "statuses": {
+        "already_above": 62,
+        "observed": 48,
+        "not_reached": 107,
+        "no_data": 0
+      }
+    },
+    "10": {
+      "eligible": 39,
+      "statuses": {
+        "already_above": 48,
+        "observed": 45,
+        "not_reached": 124,
+        "no_data": 0
+      }
+    },
+    "12": {
+      "eligible": 43,
+      "statuses": {
+        "already_above": 29,
+        "observed": 49,
+        "not_reached": 139,
+        "no_data": 0
+      }
+    }
+  },
+  "threshold_comparison": "all 651 rows agree",
+  "gdp_aging": {
+    "n": 197,
+    "pearson": 0.7217341891160218
+  },
+  "labor": {
+    "n": 184,
+    "pearson": 0.0807368873442432
+  },
+  "derived_formula_max_absolute_errors": {
+    "population_65_plus": 0.0004941225051879883,
+    "child_dependency": 4.988862656318815e-10,
+    "old_dependency": 5.000444502911705e-11,
+    "total_dependency": 4.995115432393504e-10
+  },
+  "independently_verified_source_hashes": 98
+}

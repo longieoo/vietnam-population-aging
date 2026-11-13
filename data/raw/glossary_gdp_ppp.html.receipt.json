@@ -1,0 +1,7 @@
+{
+  "url": "https://databank.worldbank.org/metadataglossary/world-development-indicators/series/NY.GDP.PCAP.PP.KD",
+  "retrieved_utc": "2026-09-21T20:00:37.454396+00:00",
+  "sha256": "8675972c1f08aa3276eb6ebf3f178b179ec97f004796e142d8c56f8abb8a68ec",
+  "bytes": 77290,
+  "path": "data/raw/glossary_gdp_ppp.html"
+}

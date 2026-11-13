@@ -1,0 +1,16 @@
+table DimYear
+	lineageTag: 49254261-20b9-4f31-bcba-6ed17fb25a00
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 84b83d24-c4e8-441b-b033-63f0d305ef75
+		summarizeBy: none
+		sourceColumn: year
+
+	partition DimYear = m
+		mode: import
+		source = Table.FromColumns({{1991..2023}}, type table [year=Int64.Type])
+
+	annotation PBI_ResultType = Table
+

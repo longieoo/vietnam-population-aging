@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "PopulationAging"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5f328ae5-c335-4063-bc4d-1d3d6efa6dbc"
+  }
+}

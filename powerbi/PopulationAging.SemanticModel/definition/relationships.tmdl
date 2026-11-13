@@ -1,0 +1,16 @@
+relationship f0cea30e70b04df5e8e084ad604fe28d
+	fromColumn: Master.iso3
+	toColumn: DimCountry.iso3
+
+relationship 67410f2d4bc341e171535ebe0dfdd655
+	fromColumn: Master.year
+	toColumn: DimYear.year
+
+relationship 2662f847cb168e3b195d2c8249e99e01
+	fromColumn: PeriodChanges.iso3
+	toColumn: DimCountry.iso3
+
+relationship 1edfe7165c5f0d5c6386dd41627a5ea9
+	fromColumn: Thresholds.iso3
+	toColumn: DimCountry.iso3
+

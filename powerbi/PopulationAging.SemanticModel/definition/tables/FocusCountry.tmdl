@@ -1,0 +1,38 @@
+table FocusCountry
+	lineageTag: 33c286af-74fe-4cb2-b143-58c981130d80
+
+	column iso3
+		dataType: string
+		lineageTag: 99d201fb-8a80-459b-a745-250d286cca0d
+		summarizeBy: none
+		sourceColumn: iso3
+
+	column country
+		dataType: string
+		lineageTag: c2f6fc61-e7cb-4e8c-b45a-eece1a356d94
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: country
+
+	column region
+		dataType: string
+		lineageTag: 022b9d57-be71-4b8a-a73e-c52f624c4789
+		summarizeBy: none
+		sourceColumn: region
+
+	column income_group
+		dataType: string
+		lineageTag: 9efed5e0-763e-451e-802f-02e90ffde45d
+		summarizeBy: none
+		sourceColumn: income_group
+
+	column 'Quốc gia'
+		dataType: string
+		lineageTag: b78a44e3-8ed6-42fa-b08a-c94387fb976e
+		summarizeBy: none
+		sourceColumn: Quốc gia
+
+	partition FocusCountry = m
+		mode: import
+		source = DimCountry
+

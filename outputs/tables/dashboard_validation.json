@@ -1,0 +1,48 @@
+{
+  "review_date_local": "2026-10-07",
+  "snapshot_id": "f802111fa64f0c25",
+  "master_sha256": "6a65ae1082c04fa4726874952853c01eae83b69e942c8ace5d792b961271f6a5",
+  "dashboard_sha256": "3dd99c2a0eddb314b8c5e69dccdaabc622f01deb4ec757d4ea8b653224e7628b",
+  "python_tests_passed": 21,
+  "javascript_model_checks": "passed",
+  "payload_source_columns": "all numeric master columns checked; original nulls retained",
+  "derived_metrics": [
+    "aging_index",
+    "potential_support_ratio"
+  ],
+  "browser_observations": {
+    "views": [
+      "overview",
+      "aging",
+      "economy",
+      "labor"
+    ],
+    "gdp_2023_sample": 197,
+    "labor_2023_sample": 184,
+    "labor_1991_sample": 187,
+    "threshold10_observed": 45,
+    "threshold10_with_gdp": 39,
+    "east_asia_gdp_2023": "31/37",
+    "east_asia_threshold8": "12 observed /7 with GDP",
+    "compare_six": "France added",
+    "benchmark": "population-weighted selected",
+    "drilldown": "Aruba history opened from scatter point",
+    "missing_labor": "Aruba1991 preserved missing",
+    "narrow_viewport": {
+      "clientWidth": 375,
+      "scrollWidth": 375
+    },
+    "javascript_errors_observed": 0,
+    "fixed_csv_download": {
+      "status": "verified",
+      "sha256": "fcf1747d6b944a2d74c088792ab451104764a50c22a2fc462d882247de8838ed",
+      "rows": 197
+    },
+    "dynamic_csv_download": "incomplete verification: browser event timeout; fixed file fallbacks supplied"
+  },
+  "scope_limits": [
+    "Not every filter combination or browser tested",
+    "No age-sex/80+ or2050 source added",
+    "Existing report/slide content retained; their earlier evidence remains applicable"
+  ]
+}

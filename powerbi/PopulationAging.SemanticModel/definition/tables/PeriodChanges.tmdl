@@ -1,0 +1,38 @@
+table PeriodChanges
+	isHidden
+	lineageTag: e7381e90-0048-46ba-8d02-4485fbdf8ba6
+
+	column iso3
+		dataType: string
+		lineageTag: 8b03a17a-c141-433c-bee3-50e2eedc070b
+		summarizeBy: none
+		sourceColumn: iso3
+
+	column period
+		dataType: string
+		lineageTag: 94210130-44e5-4b8f-b59c-a972df1bea28
+		summarizeBy: none
+		sourceColumn: period
+
+	column change_pp
+		dataType: double
+		lineageTag: c0d7bb6b-f431-45c3-83d1-b24ffe539419
+		summarizeBy: none
+		sourceColumn: change_pp
+
+	column annual_change_pp
+		dataType: double
+		lineageTag: 2d4f887e-0180-4e7f-aee4-410178817cd4
+		summarizeBy: none
+		sourceColumn: annual_change_pp
+
+	partition PeriodChanges = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(SourceRoot & "/outputs/tables/period_changes.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"iso3", type text}, {"period", type text}, {"change_pp", type number}, {"annual_change_pp", type number}}, "en-US")
+				in
+				    Typed
+

@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-09",
+  "destination": "Power BI Desktop, local report; not published to Service",
+  "data": {
+    "rows": 7161,
+    "countries": 217,
+    "years": [
+      1991,
+      2023
+    ],
+    "master_sha256": "6a65ae1082c04fa4726874952853c01eae83b69e942c8ace5d792b961271f6a5"
+  },
+  "model": {
+    "tables": 10,
+    "dax_measures": 78,
+    "report_pages": 6,
+    "unique_visuals": 71,
+    "visual_types": {
+      "cardVisual": 5,
+      "clusteredBarChart": 1,
+      "lineChart": 8,
+      "pivotTable": 1,
+      "scatterChart": 3,
+      "shapeMap": 1,
+      "slicer": 25,
+      "stackedAreaChart": 1,
+      "tableEx": 2,
+      "textbox": 24
+    }
+  },
+  "native_ui_verified": [
+    "overview",
+    "comparison",
+    "economy",
+    "labor",
+    "world",
+    "guide"
+  ],
+  "default_2023_values_observed_in_desktop": {
+    "vnm_population": 100352192,
+    "vnm_population65_rounded": 8651529,
+    "vnm_65_percent": 8.62,
+    "vnm_gdp_ppp": 13534.8,
+    "vnm_working_age_percent": 67.77,
+    "vnm_lfpr_percent": 73.55,
+    "vnm_employment_percent": 72.34,
+    "gdp_scatter_n": 197,
+    "labor_scatter_n": 184,
+    "gdp_pearson_r_rounded": 0.603
+  },
+  "csv_cross_check": {
+    "gdp_scatter_n": 197,
+    "labor_scatter_n": 184,
+    "gdp_pearson_r": 0.6031406045774235
+  },
+  "interaction_verified": {
+    "year_filter": "2023 -> 2000 -> 2023; aging share became 5.98%; time series stopped at 2000; fixed-period matrix remained unchanged"
+  },
+  "map": {
+    "type": "native shapeMap",
+    "geometry": "retained Natural Earth 1:110m; repaired ISO3 keys",
+    "geometry_matched_economies": 170,
+    "economies_without_geometry": 47,
+    "offline_packaged_topojson": true
+  },
+  "pbix": {
+    "bytes": 1273835,
+    "sha256": "ed4d8adf4d77cdcf4014f9296f47adceb8b3a85c1814272e62a0d1e1b819b195",
+    "embedded_data_model_bytes": 1099004,
+    "crc_ok": true
+  },
+  "project_checks": {
+    "python_tests_passed": 21,
+    "cross_artifact_validation": "passed"
+  },
+  "limits": [
+    "Table visuals use scrolling when rows exceed the available height.",
+    "No Service workspace publication was performed."
+  ]
+}

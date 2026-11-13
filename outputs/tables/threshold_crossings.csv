@@ -1,0 +1,652 @@
+iso3,country,threshold,status,year,previous_year,gdp_ppp,share
+ABW,Aruba,8,observed,2005.0,2004.0,38926.4750003,8.1311684177
+ABW,Aruba,10,observed,2012.0,2011.0,34058.310233,10.25957244
+ABW,Aruba,12,observed,2016.0,2015.0,36926.1130686,12.1631984301
+AFG,Afghanistan,8,not_reached,,,,
+AFG,Afghanistan,10,not_reached,,,,
+AFG,Afghanistan,12,not_reached,,,,
+AGO,Angola,8,not_reached,,,,
+AGO,Angola,10,not_reached,,,,
+AGO,Angola,12,not_reached,,,,
+ALB,Albania,8,observed,2003.0,2002.0,8025.24803248,8.24096501461
+ALB,Albania,10,observed,2008.0,2007.0,11056.3059173,10.1805404436
+ALB,Albania,12,observed,2014.0,2013.0,13366.5040948,12.1667692065
+AND,Andorra,8,already_above,,,,9.54162438788
+AND,Andorra,10,observed,1994.0,1993.0,42716.3656354,10.1621203328
+AND,Andorra,12,observed,2000.0,1999.0,54809.1441679,12.3216868387
+ARE,United Arab Emirates,8,not_reached,,,,
+ARE,United Arab Emirates,10,not_reached,,,,
+ARE,United Arab Emirates,12,not_reached,,,,
+ARG,Argentina,8,already_above,,,,8.73730157187
+ARG,Argentina,10,observed,2006.0,2005.0,24877.2493922,10.0447136656
+ARG,Argentina,12,observed,2022.0,2021.0,27825.0273493,12.0340800139
+ARM,Armenia,8,observed,1997.0,1996.0,3879.1793801,8.27986972201
+ARM,Armenia,10,observed,2002.0,2001.0,5731.35346609,10.0057434964
+ARM,Armenia,12,observed,2019.0,2018.0,16215.3607965,12.0453317121
+ASM,American Samoa,8,not_reached,,,,
+ASM,American Samoa,10,not_reached,,,,
+ASM,American Samoa,12,not_reached,,,,
+ATG,Antigua and Barbuda,8,already_above,,,,8.90245633963
+ATG,Antigua and Barbuda,10,observed,2021.0,2020.0,25745.4958068,10.2789418402
+ATG,Antigua and Barbuda,12,not_reached,,,,
+AUS,Australia,8,already_above,,,,11.2374625015
+AUS,Australia,10,already_above,,,,11.2374625015
+AUS,Australia,12,observed,1997.0,1996.0,40773.5660517,12.0692816029
+AUT,Austria,8,already_above,,,,14.9688996202
+AUT,Austria,10,already_above,,,,14.9688996202
+AUT,Austria,12,already_above,,,,14.9688996202
+AZE,Azerbaijan,8,observed,2023.0,2022.0,21310.7386915,8.01054873196
+AZE,Azerbaijan,10,not_reached,,,,
+AZE,Azerbaijan,12,not_reached,,,,
+BDI,Burundi,8,not_reached,,,,
+BDI,Burundi,10,not_reached,,,,
+BDI,Burundi,12,not_reached,,,,
+BEL,Belgium,8,already_above,,,,15.1359276229
+BEL,Belgium,10,already_above,,,,15.1359276229
+BEL,Belgium,12,already_above,,,,15.1359276229
+BEN,Benin,8,not_reached,,,,
+BEN,Benin,10,not_reached,,,,
+BEN,Benin,12,not_reached,,,,
+BFA,Burkina Faso,8,not_reached,,,,
+BFA,Burkina Faso,10,not_reached,,,,
+BFA,Burkina Faso,12,not_reached,,,,
+BGD,Bangladesh,8,not_reached,,,,
+BGD,Bangladesh,10,not_reached,,,,
+BGD,Bangladesh,12,not_reached,,,,
+BGR,Bulgaria,8,already_above,,,,13.6355241503
+BGR,Bulgaria,10,already_above,,,,13.6355241503
+BGR,Bulgaria,12,already_above,,,,13.6355241503
+BHR,Bahrain,8,not_reached,,,,
+BHR,Bahrain,10,not_reached,,,,
+BHR,Bahrain,12,not_reached,,,,
+BHS,"Bahamas, The",8,observed,2006.0,2005.0,35789.1322132,8.14438464299
+BHS,"Bahamas, The",10,observed,2014.0,2013.0,32712.6356665,10.0400734506
+BHS,"Bahamas, The",12,not_reached,,,,
+BIH,Bosnia and Herzegovina,8,observed,1993.0,1992.0,2281.88983604,8.08947256
+BIH,Bosnia and Herzegovina,10,observed,1998.0,1997.0,6899.29705851,10.0917222551
+BIH,Bosnia and Herzegovina,12,observed,2003.0,2002.0,8709.95671578,12.4294397805
+BLR,Belarus,8,already_above,,,,10.948667383
+BLR,Belarus,10,already_above,,,,10.948667383
+BLR,Belarus,12,observed,1994.0,1993.0,8967.73072972,12.0511433466
+BLZ,Belize,8,not_reached,,,,
+BLZ,Belize,10,not_reached,,,,
+BLZ,Belize,12,not_reached,,,,
+BMU,Bermuda,8,already_above,,,,9.08267798013
+BMU,Bermuda,10,observed,1996.0,1995.0,82126.2573825,10.2853894638
+BMU,Bermuda,12,observed,2005.0,2004.0,109340.012116,12.2370875923
+BOL,Bolivia,8,not_reached,,,,
+BOL,Bolivia,10,not_reached,,,,
+BOL,Bolivia,12,not_reached,,,,
+BRA,Brazil,8,observed,2016.0,2015.0,17620.9272434,8.26857395269
+BRA,Brazil,10,observed,2022.0,2021.0,18554.0461829,10.2517847833
+BRA,Brazil,12,not_reached,,,,
+BRB,Barbados,8,already_above,,,,10.7698387454
+BRB,Barbados,10,already_above,,,,10.7698387454
+BRB,Barbados,12,observed,2012.0,2011.0,19743.578271,12.1390205371
+BRN,Brunei Darussalam,8,not_reached,,,,
+BRN,Brunei Darussalam,10,not_reached,,,,
+BRN,Brunei Darussalam,12,not_reached,,,,
+BTN,Bhutan,8,not_reached,,,,
+BTN,Bhutan,10,not_reached,,,,
+BTN,Bhutan,12,not_reached,,,,
+BWA,Botswana,8,not_reached,,,,
+BWA,Botswana,10,not_reached,,,,
+BWA,Botswana,12,not_reached,,,,
+CAF,Central African Republic,8,not_reached,,,,
+CAF,Central African Republic,10,not_reached,,,,
+CAF,Central African Republic,12,not_reached,,,,
+CAN,Canada,8,already_above,,,,11.4126310513
+CAN,Canada,10,already_above,,,,11.4126310513
+CAN,Canada,12,observed,1996.0,1995.0,41880.5355896,12.0896719714
+CHE,Switzerland,8,already_above,,,,14.5703454163
+CHE,Switzerland,10,already_above,,,,14.5703454163
+CHE,Switzerland,12,already_above,,,,14.5703454163
+CHI,Channel Islands,8,already_above,,,,14.5470298745
+CHI,Channel Islands,10,already_above,,,,14.5470298745
+CHI,Channel Islands,12,already_above,,,,14.5470298745
+CHL,Chile,8,observed,2000.0,1999.0,17529.4205998,8.17687271404
+CHL,Chile,10,observed,2011.0,2010.0,25372.2741481,10.2035000315
+CHL,Chile,12,observed,2018.0,2017.0,28499.4064,12.0636582777
+CHN,China,8,observed,2006.0,2005.0,7057.11131595,8.05386346846
+CHN,China,10,observed,2015.0,2014.0,14857.1088234,10.053420915
+CHN,China,12,observed,2019.0,2018.0,18820.5871646,12.0613659717
+CIV,Cote d'Ivoire,8,not_reached,,,,
+CIV,Cote d'Ivoire,10,not_reached,,,,
+CIV,Cote d'Ivoire,12,not_reached,,,,
+CMR,Cameroon,8,not_reached,,,,
+CMR,Cameroon,10,not_reached,,,,
+CMR,Cameroon,12,not_reached,,,,
+COD,"Congo, Dem. Rep.",8,not_reached,,,,
+COD,"Congo, Dem. Rep.",10,not_reached,,,,
+COD,"Congo, Dem. Rep.",12,not_reached,,,,
+COG,"Congo, Rep.",8,not_reached,,,,
+COG,"Congo, Rep.",10,not_reached,,,,
+COG,"Congo, Rep.",12,not_reached,,,,
+COL,Colombia,8,observed,2019.0,2018.0,17336.7716031,8.19032265077
+COL,Colombia,10,not_reached,,,,
+COL,Colombia,12,not_reached,,,,
+COM,Comoros,8,not_reached,,,,
+COM,Comoros,10,not_reached,,,,
+COM,Comoros,12,not_reached,,,,
+CPV,Cabo Verde,8,not_reached,,,,
+CPV,Cabo Verde,10,not_reached,,,,
+CPV,Cabo Verde,12,not_reached,,,,
+CRI,Costa Rica,8,observed,2013.0,2012.0,20242.2938648,8.15266148405
+CRI,Costa Rica,10,observed,2019.0,2018.0,23496.8294623,10.1054724187
+CRI,Costa Rica,12,not_reached,,,,
+CUB,Cuba,8,already_above,,,,8.42850664885
+CUB,Cuba,10,observed,2001.0,2000.0,,10.065629158
+CUB,Cuba,12,observed,2008.0,2007.0,,12.0493113497
+CUW,Curacao,8,observed,1997.0,1996.0,,8.18042101341
+CUW,Curacao,10,observed,2005.0,2004.0,33651.504583,10.2182231533
+CUW,Curacao,12,observed,2011.0,2010.0,32704.3558693,12.3765498278
+CYM,Cayman Islands,8,observed,2022.0,2021.0,76735.3744333,8.13783759245
+CYM,Cayman Islands,10,not_reached,,,,
+CYM,Cayman Islands,12,not_reached,,,,
+CYP,Cyprus,8,already_above,,,,9.75268604558
+CYP,Cyprus,10,observed,2001.0,2000.0,37146.84375,10.0289692126
+CYP,Cyprus,12,observed,2013.0,2012.0,36650.5703125,12.0174508719
+CZE,Czechia,8,already_above,,,,12.665236634
+CZE,Czechia,10,already_above,,,,12.665236634
+CZE,Czechia,12,already_above,,,,12.665236634
+DEU,Germany,8,already_above,,,,14.9020513455
+DEU,Germany,10,already_above,,,,14.9020513455
+DEU,Germany,12,already_above,,,,14.9020513455
+DJI,Djibouti,8,not_reached,,,,
+DJI,Djibouti,10,not_reached,,,,
+DJI,Djibouti,12,not_reached,,,,
+DMA,Dominica,8,already_above,,,,9.11590051446
+DMA,Dominica,10,observed,2001.0,2000.0,14091.5491388,10.077173149
+DMA,Dominica,12,observed,2020.0,2019.0,14919.5307687,12.1853402986
+DNK,Denmark,8,already_above,,,,15.5809531163
+DNK,Denmark,10,already_above,,,,15.5809531163
+DNK,Denmark,12,already_above,,,,15.5809531163
+DOM,Dominican Republic,8,not_reached,,,,
+DOM,Dominican Republic,10,not_reached,,,,
+DOM,Dominican Republic,12,not_reached,,,,
+DZA,Algeria,8,not_reached,,,,
+DZA,Algeria,10,not_reached,,,,
+DZA,Algeria,12,not_reached,,,,
+ECU,Ecuador,8,observed,2023.0,2022.0,14321.1648296,8.09288255232
+ECU,Ecuador,10,not_reached,,,,
+ECU,Ecuador,12,not_reached,,,,
+EGY,"Egypt, Arab Rep.",8,not_reached,,,,
+EGY,"Egypt, Arab Rep.",10,not_reached,,,,
+EGY,"Egypt, Arab Rep.",12,not_reached,,,,
+ERI,Eritrea,8,not_reached,,,,
+ERI,Eritrea,10,not_reached,,,,
+ERI,Eritrea,12,not_reached,,,,
+ESP,Spain,8,already_above,,,,13.8574177245
+ESP,Spain,10,already_above,,,,13.8574177245
+ESP,Spain,12,already_above,,,,13.8574177245
+EST,Estonia,8,already_above,,,,11.8240993341
+EST,Estonia,10,already_above,,,,11.8240993341
+EST,Estonia,12,observed,1992.0,1991.0,14223.9075669,12.2123772572
+ETH,Ethiopia,8,not_reached,,,,
+ETH,Ethiopia,10,not_reached,,,,
+ETH,Ethiopia,12,not_reached,,,,
+FIN,Finland,8,already_above,,,,13.5414289931
+FIN,Finland,10,already_above,,,,13.5414289931
+FIN,Finland,12,already_above,,,,13.5414289931
+FJI,Fiji,8,not_reached,,,,
+FJI,Fiji,10,not_reached,,,,
+FJI,Fiji,12,not_reached,,,,
+FRA,France,8,already_above,,,,14.2066198121
+FRA,France,10,already_above,,,,14.2066198121
+FRA,France,12,already_above,,,,14.2066198121
+FRO,Faroe Islands,8,already_above,,,,12.1988209159
+FRO,Faroe Islands,10,already_above,,,,12.1988209159
+FRO,Faroe Islands,12,already_above,,,,12.1988209159
+FSM,"Micronesia, Fed. Sts.",8,not_reached,,,,
+FSM,"Micronesia, Fed. Sts.",10,not_reached,,,,
+FSM,"Micronesia, Fed. Sts.",12,not_reached,,,,
+GAB,Gabon,8,not_reached,,,,
+GAB,Gabon,10,not_reached,,,,
+GAB,Gabon,12,not_reached,,,,
+GBR,United Kingdom,8,already_above,,,,15.925573665
+GBR,United Kingdom,10,already_above,,,,15.925573665
+GBR,United Kingdom,12,already_above,,,,15.925573665
+GEO,Georgia,8,already_above,,,,9.18154341023
+GEO,Georgia,10,observed,1994.0,1993.0,3532.32008111,10.370607289
+GEO,Georgia,12,observed,1999.0,1998.0,5495.24505053,12.0977771035
+GHA,Ghana,8,not_reached,,,,
+GHA,Ghana,10,not_reached,,,,
+GHA,Ghana,12,not_reached,,,,
+GIB,Gibraltar,8,already_above,,,,13.0678860882
+GIB,Gibraltar,10,already_above,,,,13.0678860882
+GIB,Gibraltar,12,already_above,,,,13.0678860882
+GIN,Guinea,8,not_reached,,,,
+GIN,Guinea,10,not_reached,,,,
+GIN,Guinea,12,not_reached,,,,
+GMB,"Gambia, The",8,not_reached,,,,
+GMB,"Gambia, The",10,not_reached,,,,
+GMB,"Gambia, The",12,not_reached,,,,
+GNB,Guinea-Bissau,8,not_reached,,,,
+GNB,Guinea-Bissau,10,not_reached,,,,
+GNB,Guinea-Bissau,12,not_reached,,,,
+GNQ,Equatorial Guinea,8,not_reached,,,,
+GNQ,Equatorial Guinea,10,not_reached,,,,
+GNQ,Equatorial Guinea,12,not_reached,,,,
+GRC,Greece,8,already_above,,,,14.0591835713
+GRC,Greece,10,already_above,,,,14.0591835713
+GRC,Greece,12,already_above,,,,14.0591835713
+GRD,Grenada,8,observed,1998.0,1997.0,10509.1098075,8.10450056127
+GRD,Grenada,10,observed,2015.0,2014.0,15136.6966674,10.0670584952
+GRD,Grenada,12,not_reached,,,,
+GRL,Greenland,8,observed,2017.0,2016.0,66297.1790691,8.18337465
+GRL,Greenland,10,observed,2023.0,2022.0,71037.537224,10.1193616165
+GRL,Greenland,12,not_reached,,,,
+GTM,Guatemala,8,not_reached,,,,
+GTM,Guatemala,10,not_reached,,,,
+GTM,Guatemala,12,not_reached,,,,
+GUM,Guam,8,observed,2014.0,2013.0,,8.1082387634
+GUM,Guam,10,observed,2019.0,2018.0,,10.3310713933
+GUM,Guam,12,observed,2023.0,2022.0,,12.1169443836
+GUY,Guyana,8,not_reached,,,,
+GUY,Guyana,10,not_reached,,,,
+GUY,Guyana,12,not_reached,,,,
+HKG,"Hong Kong SAR, China",8,already_above,,,,8.87367019812
+HKG,"Hong Kong SAR, China",10,observed,1996.0,1995.0,37804.0797903,10.2507368547
+HKG,"Hong Kong SAR, China",12,observed,2004.0,2003.0,44836.1768654,12.1360867813
+HND,Honduras,8,not_reached,,,,
+HND,Honduras,10,not_reached,,,,
+HND,Honduras,12,not_reached,,,,
+HRV,Croatia,8,already_above,,,,11.9159956868
+HRV,Croatia,10,already_above,,,,11.9159956868
+HRV,Croatia,12,observed,1992.0,1991.0,17020.16691,12.3160155848
+HTI,Haiti,8,not_reached,,,,
+HTI,Haiti,10,not_reached,,,,
+HTI,Haiti,12,not_reached,,,,
+HUN,Hungary,8,already_above,,,,13.5930677992
+HUN,Hungary,10,already_above,,,,13.5930677992
+HUN,Hungary,12,already_above,,,,13.5930677992
+IDN,Indonesia,8,not_reached,,,,
+IDN,Indonesia,10,not_reached,,,,
+IDN,Indonesia,12,not_reached,,,,
+IMN,Isle of Man,8,already_above,,,,19.2361961652
+IMN,Isle of Man,10,already_above,,,,19.2361961652
+IMN,Isle of Man,12,already_above,,,,19.2361961652
+IND,India,8,not_reached,,,,
+IND,India,10,not_reached,,,,
+IND,India,12,not_reached,,,,
+IRL,Ireland,8,already_above,,,,11.4209763854
+IRL,Ireland,10,already_above,,,,11.4209763854
+IRL,Ireland,12,observed,2012.0,2011.0,59303.0319814,12.0822402488
+IRN,"Iran, Islamic Rep.",8,not_reached,,,,
+IRN,"Iran, Islamic Rep.",10,not_reached,,,,
+IRN,"Iran, Islamic Rep.",12,not_reached,,,,
+IRQ,Iraq,8,not_reached,,,,
+IRQ,Iraq,10,not_reached,,,,
+IRQ,Iraq,12,not_reached,,,,
+ISL,Iceland,8,already_above,,,,10.7202147301
+ISL,Iceland,10,already_above,,,,10.7202147301
+ISL,Iceland,12,observed,2010.0,2009.0,57225.1024282,12.1351655467
+ISR,Israel,8,already_above,,,,9.35875191257
+ISR,Israel,10,observed,2011.0,2010.0,39036.0247357,10.0737415795
+ISR,Israel,12,observed,2020.0,2019.0,42926.5415419,12.0528770589
+ITA,Italy,8,already_above,,,,15.3297769204
+ITA,Italy,10,already_above,,,,15.3297769204
+ITA,Italy,12,already_above,,,,15.3297769204
+JAM,Jamaica,8,not_reached,,,,
+JAM,Jamaica,10,not_reached,,,,
+JAM,Jamaica,12,not_reached,,,,
+JOR,Jordan,8,not_reached,,,,
+JOR,Jordan,10,not_reached,,,,
+JOR,Jordan,12,not_reached,,,,
+JPN,Japan,8,already_above,,,,12.642662743
+JPN,Japan,10,already_above,,,,12.642662743
+JPN,Japan,12,already_above,,,,12.642662743
+KAZ,Kazakhstan,8,observed,2023.0,2022.0,34703.2349287,8.30816704135
+KAZ,Kazakhstan,10,not_reached,,,,
+KAZ,Kazakhstan,12,not_reached,,,,
+KEN,Kenya,8,not_reached,,,,
+KEN,Kenya,10,not_reached,,,,
+KEN,Kenya,12,not_reached,,,,
+KGZ,Kyrgyz Republic,8,not_reached,,,,
+KGZ,Kyrgyz Republic,10,not_reached,,,,
+KGZ,Kyrgyz Republic,12,not_reached,,,,
+KHM,Cambodia,8,not_reached,,,,
+KHM,Cambodia,10,not_reached,,,,
+KHM,Cambodia,12,not_reached,,,,
+KIR,Kiribati,8,not_reached,,,,
+KIR,Kiribati,10,not_reached,,,,
+KIR,Kiribati,12,not_reached,,,,
+KNA,St. Kitts and Nevis,8,already_above,,,,9.55944298528
+KNA,St. Kitts and Nevis,10,observed,2022.0,2021.0,29749.8700865,10.2356051767
+KNA,St. Kitts and Nevis,12,not_reached,,,,
+KOR,"Korea, Rep.",8,observed,2003.0,2002.0,30142.4605586,8.20122350683
+KOR,"Korea, Rep.",10,observed,2008.0,2007.0,37064.1518484,10.2481480615
+KOR,"Korea, Rep.",12,observed,2013.0,2012.0,42709.9751858,12.097143257
+KWT,Kuwait,8,not_reached,,,,
+KWT,Kuwait,10,not_reached,,,,
+KWT,Kuwait,12,not_reached,,,,
+LAO,Lao PDR,8,not_reached,,,,
+LAO,Lao PDR,10,not_reached,,,,
+LAO,Lao PDR,12,not_reached,,,,
+LBN,Lebanon,8,observed,2018.0,2017.0,16290.0516479,8.33008097515
+LBN,Lebanon,10,not_reached,,,,
+LBN,Lebanon,12,not_reached,,,,
+LBR,Liberia,8,not_reached,,,,
+LBR,Liberia,10,not_reached,,,,
+LBR,Liberia,12,not_reached,,,,
+LBY,Libya,8,not_reached,,,,
+LBY,Libya,10,not_reached,,,,
+LBY,Libya,12,not_reached,,,,
+LCA,St. Lucia,8,observed,2016.0,2015.0,21566.30588,8.10009906289
+LCA,St. Lucia,10,not_reached,,,,
+LCA,St. Lucia,12,not_reached,,,,
+LIE,Liechtenstein,8,already_above,,,,10.0858992093
+LIE,Liechtenstein,10,already_above,,,,10.0858992093
+LIE,Liechtenstein,12,observed,2007.0,2006.0,,12.2537330381
+LKA,Sri Lanka,8,observed,2013.0,2012.0,12249.7223348,8.29233506128
+LKA,Sri Lanka,10,observed,2018.0,2017.0,14759.8248945,10.0359733858
+LKA,Sri Lanka,12,not_reached,,,,
+LSO,Lesotho,8,not_reached,,,,
+LSO,Lesotho,10,not_reached,,,,
+LSO,Lesotho,12,not_reached,,,,
+LTU,Lithuania,8,already_above,,,,11.0830136914
+LTU,Lithuania,10,already_above,,,,11.0830136914
+LTU,Lithuania,12,observed,1995.0,1994.0,12168.8332695,12.2903316701
+LUX,Luxembourg,8,already_above,,,,13.4386544542
+LUX,Luxembourg,10,already_above,,,,13.4386544542
+LUX,Luxembourg,12,already_above,,,,13.4386544542
+LVA,Latvia,8,already_above,,,,12.018052504
+LVA,Latvia,10,already_above,,,,12.018052504
+LVA,Latvia,12,already_above,,,,12.018052504
+MAC,"Macao SAR, China",8,observed,2014.0,2013.0,162813.439349,8.18977099937
+MAC,"Macao SAR, China",10,observed,2018.0,2017.0,139541.157249,10.0197033268
+MAC,"Macao SAR, China",12,observed,2021.0,2020.0,73374.448683,12.0335194887
+MAF,St. Martin (French part),8,observed,2017.0,2016.0,,8.11129962674
+MAF,St. Martin (French part),10,observed,2018.0,2017.0,,10.2785182717
+MAF,St. Martin (French part),12,observed,2019.0,2018.0,,16.2097091912
+MAR,Morocco,8,not_reached,,,,
+MAR,Morocco,10,not_reached,,,,
+MAR,Morocco,12,not_reached,,,,
+MCO,Monaco,8,already_above,,,,21.8599487339
+MCO,Monaco,10,already_above,,,,21.8599487339
+MCO,Monaco,12,already_above,,,,21.8599487339
+MDA,Moldova,8,already_above,,,,8.6106733405
+MDA,Moldova,10,observed,2000.0,1999.0,5727.07922525,10.1002569914
+MDA,Moldova,12,observed,2016.0,2015.0,12377.3666784,12.2990838824
+MDG,Madagascar,8,not_reached,,,,
+MDG,Madagascar,10,not_reached,,,,
+MDG,Madagascar,12,not_reached,,,,
+MDV,Maldives,8,not_reached,,,,
+MDV,Maldives,10,not_reached,,,,
+MDV,Maldives,12,not_reached,,,,
+MEX,Mexico,8,not_reached,,,,
+MEX,Mexico,10,not_reached,,,,
+MEX,Mexico,12,not_reached,,,,
+MHL,Marshall Islands,8,not_reached,,,,
+MHL,Marshall Islands,10,not_reached,,,,
+MHL,Marshall Islands,12,not_reached,,,,
+MKD,North Macedonia,8,observed,1993.0,1992.0,10764.7022358,8.11042853381
+MKD,North Macedonia,10,observed,2002.0,2001.0,11830.2626132,10.1740481006
+MKD,North Macedonia,12,observed,2012.0,2011.0,17189.9956305,12.0723567465
+MLI,Mali,8,not_reached,,,,
+MLI,Mali,10,not_reached,,,,
+MLI,Mali,12,not_reached,,,,
+MLT,Malta,8,already_above,,,,10.6531495443
+MLT,Malta,10,already_above,,,,10.6531495443
+MLT,Malta,12,observed,2000.0,1999.0,31068.0784498,12.155565836
+MMR,Myanmar,8,not_reached,,,,
+MMR,Myanmar,10,not_reached,,,,
+MMR,Myanmar,12,not_reached,,,,
+MNE,Montenegro,8,already_above,,,,8.25350929102
+MNE,Montenegro,10,observed,1997.0,1996.0,14638.736349,10.1084001215
+MNE,Montenegro,12,observed,2003.0,2002.0,15076.6513904,12.1863850199
+MNG,Mongolia,8,not_reached,,,,
+MNG,Mongolia,10,not_reached,,,,
+MNG,Mongolia,12,not_reached,,,,
+MNP,Northern Mariana Islands,8,observed,2023.0,2022.0,,8.73335843874
+MNP,Northern Mariana Islands,10,not_reached,,,,
+MNP,Northern Mariana Islands,12,not_reached,,,,
+MOZ,Mozambique,8,not_reached,,,,
+MOZ,Mozambique,10,not_reached,,,,
+MOZ,Mozambique,12,not_reached,,,,
+MRT,Mauritania,8,not_reached,,,,
+MRT,Mauritania,10,not_reached,,,,
+MRT,Mauritania,12,not_reached,,,,
+MUS,Mauritius,8,observed,2013.0,2012.0,20952.3775735,8.02578034499
+MUS,Mauritius,10,observed,2018.0,2017.0,25243.886462,10.3966493733
+MUS,Mauritius,12,observed,2022.0,2021.0,25005.0666146,12.3957639095
+MWI,Malawi,8,not_reached,,,,
+MWI,Malawi,10,not_reached,,,,
+MWI,Malawi,12,not_reached,,,,
+MYS,Malaysia,8,not_reached,,,,
+MYS,Malaysia,10,not_reached,,,,
+MYS,Malaysia,12,not_reached,,,,
+NAM,Namibia,8,not_reached,,,,
+NAM,Namibia,10,not_reached,,,,
+NAM,Namibia,12,not_reached,,,,
+NCL,New Caledonia,8,observed,2012.0,2011.0,,8.04320535428
+NCL,New Caledonia,10,observed,2020.0,2019.0,,10.2547184584
+NCL,New Caledonia,12,not_reached,,,,
+NER,Niger,8,not_reached,,,,
+NER,Niger,10,not_reached,,,,
+NER,Niger,12,not_reached,,,,
+NGA,Nigeria,8,not_reached,,,,
+NGA,Nigeria,10,not_reached,,,,
+NGA,Nigeria,12,not_reached,,,,
+NIC,Nicaragua,8,not_reached,,,,
+NIC,Nicaragua,10,not_reached,,,,
+NIC,Nicaragua,12,not_reached,,,,
+NLD,Netherlands,8,already_above,,,,12.8385017839
+NLD,Netherlands,10,already_above,,,,12.8385017839
+NLD,Netherlands,12,already_above,,,,12.8385017839
+NOR,Norway,8,already_above,,,,16.2926444095
+NOR,Norway,10,already_above,,,,16.2926444095
+NOR,Norway,12,already_above,,,,16.2926444095
+NPL,Nepal,8,not_reached,,,,
+NPL,Nepal,10,not_reached,,,,
+NPL,Nepal,12,not_reached,,,,
+NRU,Naoero,8,not_reached,,,,
+NRU,Naoero,10,not_reached,,,,
+NRU,Naoero,12,not_reached,,,,
+NZL,New Zealand,8,already_above,,,,11.1612989132
+NZL,New Zealand,10,already_above,,,,11.1612989132
+NZL,New Zealand,12,observed,2005.0,2004.0,40970.2958383,12.0218553465
+OMN,Oman,8,not_reached,,,,
+OMN,Oman,10,not_reached,,,,
+OMN,Oman,12,not_reached,,,,
+PAK,Pakistan,8,not_reached,,,,
+PAK,Pakistan,10,not_reached,,,,
+PAK,Pakistan,12,not_reached,,,,
+PAN,Panama,8,observed,2019.0,2018.0,33163.7172815,8.06954352498
+PAN,Panama,10,not_reached,,,,
+PAN,Panama,12,not_reached,,,,
+PER,Peru,8,observed,2014.0,2013.0,14242.6444761,8.02200809634
+PER,Peru,10,not_reached,,,,
+PER,Peru,12,not_reached,,,,
+PHL,Philippines,8,not_reached,,,,
+PHL,Philippines,10,not_reached,,,,
+PHL,Philippines,12,not_reached,,,,
+PLW,Palau,8,observed,2017.0,2016.0,19693.4082379,8.25286323827
+PLW,Palau,10,observed,2022.0,2021.0,16258.6271293,10.3778365899
+PLW,Palau,12,not_reached,,,,
+PNG,Papua New Guinea,8,not_reached,,,,
+PNG,Papua New Guinea,10,not_reached,,,,
+PNG,Papua New Guinea,12,not_reached,,,,
+POL,Poland,8,already_above,,,,10.2914029157
+POL,Poland,10,already_above,,,,10.2914029157
+POL,Poland,12,observed,1999.0,1998.0,17556.0026928,12.0241918344
+PRI,Puerto Rico (US),8,already_above,,,,9.54204075111
+PRI,Puerto Rico (US),10,observed,1993.0,1992.0,29282.1121792,10.0547521992
+PRI,Puerto Rico (US),12,observed,2002.0,2001.0,39879.7295567,12.2667217745
+PRK,"Korea, Dem. People's Rep.",8,observed,2005.0,2004.0,,8.24762562118
+PRK,"Korea, Dem. People's Rep.",10,observed,2011.0,2010.0,,10.0685940584
+PRK,"Korea, Dem. People's Rep.",12,observed,2023.0,2022.0,,12.0285977805
+PRT,Portugal,8,already_above,,,,13.8440120907
+PRT,Portugal,10,already_above,,,,13.8440120907
+PRT,Portugal,12,already_above,,,,13.8440120907
+PRY,Paraguay,8,not_reached,,,,
+PRY,Paraguay,10,not_reached,,,,
+PRY,Paraguay,12,not_reached,,,,
+PSE,West Bank and Gaza,8,not_reached,,,,
+PSE,West Bank and Gaza,10,not_reached,,,,
+PSE,West Bank and Gaza,12,not_reached,,,,
+PYF,French Polynesia,8,observed,2018.0,2017.0,,8.30422188907
+PYF,French Polynesia,10,observed,2022.0,2021.0,,10.1726954326
+PYF,French Polynesia,12,not_reached,,,,
+QAT,Qatar,8,not_reached,,,,
+QAT,Qatar,10,not_reached,,,,
+QAT,Qatar,12,not_reached,,,,
+ROU,Romania,8,already_above,,,,10.8141904533
+ROU,Romania,10,already_above,,,,10.8141904533
+ROU,Romania,12,observed,1995.0,1994.0,14863.1855937,12.0221546534
+RUS,Russian Federation,8,already_above,,,,10.3469495729
+RUS,Russian Federation,10,already_above,,,,10.3469495729
+RUS,Russian Federation,12,observed,1996.0,1995.0,17699.8691406,12.1191718253
+RWA,Rwanda,8,not_reached,,,,
+RWA,Rwanda,10,not_reached,,,,
+RWA,Rwanda,12,not_reached,,,,
+SAU,Saudi Arabia,8,not_reached,,,,
+SAU,Saudi Arabia,10,not_reached,,,,
+SAU,Saudi Arabia,12,not_reached,,,,
+SDN,Sudan,8,not_reached,,,,
+SDN,Sudan,10,not_reached,,,,
+SDN,Sudan,12,not_reached,,,,
+SEN,Senegal,8,not_reached,,,,
+SEN,Senegal,10,not_reached,,,,
+SEN,Senegal,12,not_reached,,,,
+SGP,Singapore,8,observed,2013.0,2012.0,105259.693561,8.16514295513
+SGP,Singapore,10,observed,2018.0,2017.0,120668.888726,10.4836486141
+SGP,Singapore,12,observed,2021.0,2020.0,133990.186782,12.2581942163
+SLB,Solomon Islands,8,not_reached,,,,
+SLB,Solomon Islands,10,not_reached,,,,
+SLB,Solomon Islands,12,not_reached,,,,
+SLE,Sierra Leone,8,not_reached,,,,
+SLE,Sierra Leone,10,not_reached,,,,
+SLE,Sierra Leone,12,not_reached,,,,
+SLV,El Salvador,8,observed,2023.0,2022.0,11404.3342263,8.000318244
+SLV,El Salvador,10,not_reached,,,,
+SLV,El Salvador,12,not_reached,,,,
+SMR,San Marino,8,already_above,,,,13.9384389117
+SMR,San Marino,10,already_above,,,,13.9384389117
+SMR,San Marino,12,already_above,,,,13.9384389117
+SOM,"Somalia, Fed. Rep.",8,not_reached,,,,
+SOM,"Somalia, Fed. Rep.",10,not_reached,,,,
+SOM,"Somalia, Fed. Rep.",12,not_reached,,,,
+SRB,Serbia,8,already_above,,,,11.724166071
+SRB,Serbia,10,already_above,,,,11.724166071
+SRB,Serbia,12,observed,1992.0,1991.0,,12.1956342829
+SSD,South Sudan,8,not_reached,,,,
+SSD,South Sudan,10,not_reached,,,,
+SSD,South Sudan,12,not_reached,,,,
+STP,Sao Tome and Principe,8,not_reached,,,,
+STP,Sao Tome and Principe,10,not_reached,,,,
+STP,Sao Tome and Principe,12,not_reached,,,,
+SUR,Suriname,8,not_reached,,,,
+SUR,Suriname,10,not_reached,,,,
+SUR,Suriname,12,not_reached,,,,
+SVK,Slovak Republic,8,already_above,,,,10.3731706754
+SVK,Slovak Republic,10,already_above,,,,10.3731706754
+SVK,Slovak Republic,12,observed,2008.0,2007.0,29544.0905968,12.1221303743
+SVN,Slovenia,8,already_above,,,,10.9412147802
+SVN,Slovenia,10,already_above,,,,10.9412147802
+SVN,Slovenia,12,observed,1995.0,1994.0,24722.6569168,12.214003858
+SWE,Sweden,8,already_above,,,,17.7386477062
+SWE,Sweden,10,already_above,,,,17.7386477062
+SWE,Sweden,12,already_above,,,,17.7386477062
+SWZ,Eswatini,8,not_reached,,,,
+SWZ,Eswatini,10,not_reached,,,,
+SWZ,Eswatini,12,not_reached,,,,
+SXM,Sint Maarten (Dutch part),8,observed,2016.0,2015.0,50817.6814943,8.3583884546
+SXM,Sint Maarten (Dutch part),10,observed,2019.0,2018.0,45996.7912347,10.6426970744
+SXM,Sint Maarten (Dutch part),12,observed,2021.0,2020.0,40507.0672412,12.3198864593
+SYC,Seychelles,8,observed,2022.0,2021.0,27275.688382,8.14754326914
+SYC,Seychelles,10,not_reached,,,,
+SYC,Seychelles,12,not_reached,,,,
+SYR,Syrian Arab Republic,8,not_reached,,,,
+SYR,Syrian Arab Republic,10,not_reached,,,,
+SYR,Syrian Arab Republic,12,not_reached,,,,
+TCA,Turks and Caicos Islands,8,observed,2015.0,2014.0,17201.7720346,8.251604972
+TCA,Turks and Caicos Islands,10,observed,2020.0,2019.0,19702.5368197,10.0776154375
+TCA,Turks and Caicos Islands,12,not_reached,,,,
+TCD,Chad,8,not_reached,,,,
+TCD,Chad,10,not_reached,,,,
+TCD,Chad,12,not_reached,,,,
+TGO,Togo,8,not_reached,,,,
+TGO,Togo,10,not_reached,,,,
+TGO,Togo,12,not_reached,,,,
+THA,Thailand,8,observed,2008.0,2007.0,15893.5084948,8.13020227846
+THA,Thailand,10,observed,2015.0,2014.0,18814.0408555,10.3239727428
+THA,Thailand,12,observed,2019.0,2018.0,21280.1504519,12.3287535151
+TJK,Tajikistan,8,not_reached,,,,
+TJK,Tajikistan,10,not_reached,,,,
+TJK,Tajikistan,12,not_reached,,,,
+TKM,Turkmenistan,8,not_reached,,,,
+TKM,Turkmenistan,10,not_reached,,,,
+TKM,Turkmenistan,12,not_reached,,,,
+TLS,Timor-Leste,8,not_reached,,,,
+TLS,Timor-Leste,10,not_reached,,,,
+TLS,Timor-Leste,12,not_reached,,,,
+TON,Tonga,8,not_reached,,,,
+TON,Tonga,10,not_reached,,,,
+TON,Tonga,12,not_reached,,,,
+TTO,Trinidad and Tobago,8,observed,2015.0,2014.0,38963.9641783,8.00727125918
+TTO,Trinidad and Tobago,10,observed,2020.0,2019.0,30720.8876936,10.4441624323
+TTO,Trinidad and Tobago,12,not_reached,,,,
+TUN,Tunisia,8,observed,2020.0,2019.0,11955.5983698,8.28177534147
+TUN,Tunisia,10,not_reached,,,,
+TUN,Tunisia,12,not_reached,,,,
+TUR,Turkiye,8,observed,2018.0,2017.0,28780.3036458,8.17189463389
+TUR,Turkiye,10,observed,2023.0,2022.0,35069.1701715,10.0010276668
+TUR,Turkiye,12,not_reached,,,,
+TUV,Tuvalu,8,not_reached,,,,
+TUV,Tuvalu,10,not_reached,,,,
+TUV,Tuvalu,12,not_reached,,,,
+TZA,Tanzania,8,not_reached,,,,
+TZA,Tanzania,10,not_reached,,,,
+TZA,Tanzania,12,not_reached,,,,
+UGA,Uganda,8,not_reached,,,,
+UGA,Uganda,10,not_reached,,,,
+UGA,Uganda,12,not_reached,,,,
+UKR,Ukraine,8,already_above,,,,12.2476113891
+UKR,Ukraine,10,already_above,,,,12.2476113891
+UKR,Ukraine,12,already_above,,,,12.2476113891
+URY,Uruguay,8,already_above,,,,11.8081120539
+URY,Uruguay,10,already_above,,,,11.8081120539
+URY,Uruguay,12,observed,1993.0,1992.0,15865.2715092,12.1408762127
+USA,United States,8,already_above,,,,12.3519332841
+USA,United States,10,already_above,,,,12.3519332841
+USA,United States,12,already_above,,,,12.3519332841
+UZB,Uzbekistan,8,not_reached,,,,
+UZB,Uzbekistan,10,not_reached,,,,
+UZB,Uzbekistan,12,not_reached,,,,
+VCT,St. Vincent and the Grenadines,8,observed,2008.0,2007.0,13850.393679,8.05739066996
+VCT,St. Vincent and the Grenadines,10,observed,2018.0,2017.0,16139.0661085,10.2353086937
+VCT,St. Vincent and the Grenadines,12,not_reached,,,,
+VEN,"Venezuela, RB",8,observed,2020.0,2019.0,,8.2650597475
+VEN,"Venezuela, RB",10,not_reached,,,,
+VEN,"Venezuela, RB",12,not_reached,,,,
+VGB,British Virgin Islands,8,observed,2019.0,2018.0,,8.05066699639
+VGB,British Virgin Islands,10,not_reached,,,,
+VGB,British Virgin Islands,12,not_reached,,,,
+VIR,Virgin Islands (U.S.),8,observed,1999.0,1998.0,,8.16463740353
+VIR,Virgin Islands (U.S.),10,observed,2004.0,2003.0,55883.4545511,10.1354390293
+VIR,Virgin Islands (U.S.),12,observed,2008.0,2007.0,63057.6263124,12.303197457
+VNM,Viet Nam,8,observed,2022.0,2021.0,12979.7638984,8.23004774597
+VNM,Viet Nam,10,not_reached,,,,
+VNM,Viet Nam,12,not_reached,,,,
+VUT,Vanuatu,8,not_reached,,,,
+VUT,Vanuatu,10,not_reached,,,,
+VUT,Vanuatu,12,not_reached,,,,
+WSM,Samoa,8,not_reached,,,,
+WSM,Samoa,10,not_reached,,,,
+WSM,Samoa,12,not_reached,,,,
+XKX,Kosovo,8,observed,2018.0,2017.0,11188.2244628,8.23044778619
+XKX,Kosovo,10,not_reached,,,,
+XKX,Kosovo,12,not_reached,,,,
+YEM,"Yemen, Rep.",8,not_reached,,,,
+YEM,"Yemen, Rep.",10,not_reached,,,,
+YEM,"Yemen, Rep.",12,not_reached,,,,
+ZAF,South Africa,8,not_reached,,,,
+ZAF,South Africa,10,not_reached,,,,
+ZAF,South Africa,12,not_reached,,,,
+ZMB,Zambia,8,not_reached,,,,
+ZMB,Zambia,10,not_reached,,,,
+ZMB,Zambia,12,not_reached,,,,
+ZWE,Zimbabwe,8,not_reached,,,,
+ZWE,Zimbabwe,10,not_reached,,,,
+ZWE,Zimbabwe,12,not_reached,,,,

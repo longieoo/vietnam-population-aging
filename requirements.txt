@@ -1,0 +1,5 @@
+# Python dependencies for analysis, notebooks and validation.
+-r requirements-core.txt
+nbclient==0.11.0
+nbconvert==7.17.1
+ipykernel==7.3.0

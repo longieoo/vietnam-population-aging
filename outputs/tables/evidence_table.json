@@ -1,0 +1,79 @@
+[
+  {
+    "id": "I1",
+    "finding": "Tỷ trọng 65+ của Việt Nam tăng từ 5,49% lên 8,62%, tăng 3,13 điểm phần trăm; số người 65+ tăng từ 3,67 lên 8,65 triệu.",
+    "scope": "Việt Nam, 1991 và 2023",
+    "sample": "Hai năm đủ dân số và cơ cấu tuổi",
+    "tables": "focal_series.csv; analysis_summary.json",
+    "figures": "01, 02",
+    "interpretation": "Tăng quy mô dân số và thay đổi cơ cấu cùng làm tăng số người cao tuổi.",
+    "limitation": "Số người 65+ được suy ra từ hai chỉ tiêu WDI, không phải số đếm độc lập.",
+    "implication": "Cần xem đồng thời tỷ trọng và quy mô khi thảo luận nhu cầu chăm sóc."
+  },
+  {
+    "id": "I2",
+    "finding": "Sau đáy năm 2012, tỷ số phụ thuộc tổng tăng 4,49 người trên 100 người 15–64 đến 2023. Thành phần tuổi già tăng 4,01 và trẻ em tăng 0,49; tuổi già chiếm 89,2% mức tăng số học.",
+    "scope": "Việt Nam, 1991–2023",
+    "sample": "33 năm đủ ba nhóm tuổi",
+    "tables": "focal_series.csv; demographic_insights.json",
+    "figures": "03, 11",
+    "interpretation": "Cả hai thành phần tăng trong 2012–2023, khác với hai hướng đối lập khi so 1991 với 2023.",
+    "limitation": "Nhóm tuổi không đồng nghĩa với người thực sự phụ thuộc tài chính hoặc đang làm việc.",
+    "implication": "Theo dõi riêng phụ thuộc trẻ em và tuổi già thay vì chỉ nhìn tổng số."
+  },
+  {
+    "id": "I3",
+    "finding": "Việt Nam tăng bình quân 0,198 điểm phần trăm tỷ trọng 65+ mỗi năm trong 2010–2023, so với 0,029 trong 1991–2010. Giai đoạn sau 2010 chiếm 82,2% mức tăng toàn kỳ.",
+    "scope": "Việt Nam 1991–2010 và 2010–2023; đối chiếu toàn cầu 2010–2023",
+    "sample": "217 nền kinh tế có đủ hai đầu kỳ cho phân bố",
+    "tables": "period_changes.csv; demographic_insights.json",
+    "figures": "04, 05, 06",
+    "interpretation": "Nhịp tăng mạnh hơn lịch sử của chính Việt Nam; trung vị gần đây của 217 nền kinh tế là 0,160 điểm phần trăm/năm. Không có căn cứ gọi Việt Nam nhanh nhất thế giới.",
+    "limitation": "Mốc 2010 được chọn để mô tả; không phải điểm gãy ước lượng. Tốc độ bình quân không phải dự báo.",
+    "implication": "Tách mức hiện tại khỏi tốc độ thay đổi khi lựa chọn đối chứng."
+  },
+  {
+    "id": "I4",
+    "finding": "Trong 197 nền kinh tế năm 2023, tương quan mô tả giữa log GDP/người và tỷ trọng 65+ là 0,72; sau cắt hai đuôi 5% ở cả hai biến còn 162 nền kinh tế và hệ số 0,76.",
+    "scope": "Toàn cầu, 2023",
+    "sample": "Đủ GDP PPP và tỷ trọng 65+; không trọng số",
+    "tables": "gdp_aging_2023.csv; robustness.csv",
+    "figures": "08, 09",
+    "interpretation": "Liên hệ dương không chỉ xuất hiện do vài điểm cực trị trong lát cắt này.",
+    "limitation": "Quan hệ giữa các quốc gia không xác định cơ chế hay tác động nhân quả, và không phải quỹ đạo tất yếu của một nước.",
+    "implication": "Dùng kết quả làm bối cảnh so sánh, tiếp tục phân tích lịch sử từng quốc gia."
+  },
+  {
+    "id": "I5",
+    "finding": "Việt Nam chưa đạt 10% đến năm 2023. Ở mốc 8%, lần vượt được quan sát năm 2022 tại GDP/người PPP 12.980 đô la quốc tế giá 2021; mốc 10% có 39 nền kinh tế toàn cầu đủ điều kiện so sánh.",
+    "scope": "Chuỗi 1991–2023; các mốc 8%, 10%, 12%",
+    "sample": "Chỉ lần vượt quan sát từ dưới ngưỡng, không thiếu năm trước đó, có GDP cùng năm",
+    "tables": "threshold_crossings.csv; analysis_summary.json",
+    "figures": "09, 10",
+    "interpretation": "Khả năng so sánh Việt Nam ở cùng mức già hóa phụ thuộc vào mốc được chọn và cửa sổ quan sát.",
+    "limitation": "Nhật Bản đã vượt trước đầu chuỗi; GDP tại ngưỡng của Việt Nam ở 10% và 12% chưa quan sát được.",
+    "implication": "Không kết luận cứng “già trước khi giàu” từ mốc 10% trong bộ dữ liệu này."
+  },
+  {
+    "id": "I6",
+    "finding": "Tỷ trọng 15–64 của Việt Nam giảm 2,13 điểm phần trăm từ đỉnh 2012 đến 2023. Hai tỷ lệ lao động không giảm liên tục trong cả chuỗi; riêng 2019–2023, LFPR giảm 3,07 và tỷ lệ có việc làm giảm 2,99 điểm phần trăm.",
+    "scope": "Việt Nam, 1991–2023",
+    "sample": "33 năm; hai tỷ lệ lao động cùng chuỗi ILO mô hình",
+    "tables": "focal_series.csv; demographic_insights.json",
+    "figures": "11",
+    "interpretation": "Cơ cấu tuổi và mức tham gia lao động cùng thay đổi, nhưng ba tỷ lệ có mẫu số khác nhau.",
+    "limitation": "Không có phân tổ tuổi, giới hoặc chất lượng việc làm để quy nguyên nhân.",
+    "implication": "Bước nghiên cứu tiếp theo nên dùng dữ liệu lao động theo tuổi và giới."
+  },
+  {
+    "id": "I7",
+    "finding": "Năm 2023, tương quan giữa tỷ trọng 15–64 và tỷ lệ có việc làm 15+ chỉ là 0,08 (n=184); cắt hai đuôi còn 0,02 (n=148).",
+    "scope": "Toàn cầu, 2023",
+    "sample": "Đủ tỷ trọng 15–64 và tỷ lệ có việc làm; không trọng số",
+    "tables": "labor_2023.csv; robustness.csv",
+    "figures": "12",
+    "interpretation": "Lát cắt không cho thấy quan hệ tuyến tính mạnh giữa hai tỷ lệ tổng hợp.",
+    "limitation": "Ước tính ILO có bất định và khác biệt đo lường; quan hệ yếu không chứng minh không có cơ chế nhân quả.",
+    "implication": "Không suy ra một tỷ trọng dân số trong tuổi lao động cao sẽ tự động tạo tỷ lệ có việc làm cao."
+  }
+]

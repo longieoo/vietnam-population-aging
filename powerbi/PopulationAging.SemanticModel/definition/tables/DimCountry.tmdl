@@ -1,0 +1,45 @@
+table DimCountry
+	lineageTag: 15321cec-3517-4425-877e-9ff54ee5f74c
+
+	column iso3
+		dataType: string
+		lineageTag: 64d85d99-2115-4a64-ab50-2aad2686d3f4
+		summarizeBy: none
+		sourceColumn: iso3
+
+	column country
+		dataType: string
+		lineageTag: 8ab9ccd9-d2bd-4d37-8a0d-3ff15d78d270
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: country
+
+	column region
+		dataType: string
+		lineageTag: 4ffca830-b6f2-44ea-bfc4-dc888144271b
+		summarizeBy: none
+		sourceColumn: region
+
+	column income_group
+		dataType: string
+		lineageTag: 40cd1bff-a3c7-4944-896a-a3243e5af534
+		summarizeBy: none
+		sourceColumn: income_group
+
+	column 'Quốc gia'
+		dataType: string
+		lineageTag: 1ca60a20-fb2f-44b0-b805-bba1054e9e96
+		summarizeBy: none
+		sourceColumn: Quốc gia
+
+	partition DimCountry = m
+		mode: import
+		source =
+				let
+				    Source = Table.Distinct(Table.SelectColumns(Master, {"iso3", "country", "region", "income_group"})),
+				    Named = Table.AddColumn(Source, "Quốc gia", each if false then "" else if [iso3] = "VNM" then "Việt Nam" else if [iso3] = "THA" then "Thái Lan" else if [iso3] = "IDN" then "Indonesia" else if [iso3] = "JPN" then "Nhật Bản" else if [iso3] = "KOR" then "Hàn Quốc" else [country], type text)
+				in
+				    Named
+
+	annotation PBI_ResultType = Table
+

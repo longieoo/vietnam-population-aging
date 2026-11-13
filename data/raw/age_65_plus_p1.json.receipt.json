@@ -1,0 +1,7 @@
+{
+  "url": "https://api.worldbank.org/v2/country/all/indicator/SP.POP.65UP.TO.ZS?format=json&per_page=2000&page=1&source=2",
+  "retrieved_utc": "2026-09-21T19:50:45.095817+00:00",
+  "sha256": "fc67425578c20c9371a0d7b1c07dece12bd3491ba3e892a4fd98f0f10e80f357",
+  "bytes": 527569,
+  "path": "data/raw/age_65_plus_p1.json"
+}

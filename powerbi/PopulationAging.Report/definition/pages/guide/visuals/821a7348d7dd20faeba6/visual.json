@@ -1,0 +1,126 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "821a7348d7dd20faeba6",
+  "position": {
+    "x": 24,
+    "y": 196,
+    "z": 73,
+    "width": 1392,
+    "height": 690,
+    "tabOrder": 73
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "CÁCH SỬ DỤNG\n1. Chọn quốc gia trọng tâm và năm kết thúc. Thẻ số liệu dùng năm này; chuỗi thời gian vẫn hiển thị từ 1991.\n2. Vùng và nhóm thu nhập lọc mẫu quốc tế. Quốc gia trọng tâm được giữ độc lập để đối chiếu.\n3. Trang 02 có bộ chọn nhóm quốc gia; mặc định Việt Nam, Thái Lan, Indonesia, Nhật Bản, Hàn Quốc.\n4. Chọn một điểm hoặc một dòng bảng để lọc chéo; nhấp lại điểm hoặc vùng trống để bỏ lựa chọn.\n5. Dùng dấu ... trên biểu đồ để xem bảng dữ liệu hoặc xuất dữ liệu tóm tắt.\n\nDỮ LIỆU VÀ CHỈ SỐ\n• Bảng chuẩn: 7.161 quan sát quốc gia–năm, 217 nền kinh tế, 1991–2023; không gồm các vùng tổng hợp WDI.\n• Nguồn: World Bank World Development Indicators. Bản dữ liệu lưu ngày 21–22/09/2026.\n• Dân số 65+ = dân số × tỷ trọng 65+ / 100.\n• Phụ thuộc già = 100 × tỷ trọng 65+ / tỷ trọng 15–64; tổng phụ thuộc = phụ thuộc trẻ + phụ thuộc già.\n• Tỷ lệ cơ cấu tuổi tổng hợp có trọng số dân số. Mức sinh, GDP/người và chỉ tiêu lao động chỉ hiển thị ở cấp một quốc gia–một năm.\n• GDP PPP theo USD quốc tế cố định 2021. Dữ liệu thiếu giữ là trống, không thay bằng 0.\n\nGIỚI HẠN DIỄN GIẢI\n• Tương quan và quỹ đạo thời gian là bằng chứng mô tả, không xác lập quan hệ nhân quả.\n• Ngưỡng 8%, 10%, 12% là mốc phân tích của đồ án; không coi là phân loại chính thức chung cho mọi nghiên cứu.\n• Năm đầu quan sát vượt ngưỡng nằm trong 1991–2023; trường hợp đã vượt năm 1991 không có năm vượt chính xác.\n• Nhóm thu nhập/vùng là ảnh chụp metadata của bản nguồn, không phải phân loại lịch sử từng năm.\n\nNguồn và định nghĩa: https://data.worldbank.org/ · https://databank.worldbank.org/source/world-development-indicators",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "16px",
+                      "color": "#203444"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

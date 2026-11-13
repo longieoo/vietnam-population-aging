@@ -1,0 +1,202 @@
+[
+  {
+    "variable": "population",
+    "code": "SP.POP.TOTL",
+    "id": "SP.POP.TOTL",
+    "name": "Population, total",
+    "unit": "",
+    "source": {
+      "id": "2",
+      "value": "World Development Indicators"
+    },
+    "sourceNote": "Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates.",
+    "sourceOrganization": "World Population Prospects, United Nations (UN), uri: https://population.un.org/wpp/, publisher: UN Population Division;\nStatistical databases and publications from national statistical offices, National Statistical Offices (NSOs), uri: https://unstats.un.org/home/nso_sites/, publisher: National Statistical Offices;\nEurostat: Demographic Statistics, Eurostat (ESTAT), uri: https://ec.europa.eu/eurostat/data/database?node_code=earn_ses_monthly, publisher: Eurostat;\nPopulation and Vital Statistics Report (various years), United Nations (UN), uri: https://unstats.un.org, publisher: UN Statistics Division",
+    "topics": [
+      {
+        "id": "19",
+        "value": "Climate Change"
+      },
+      {
+        "id": "8",
+        "value": "Health "
+      }
+    ],
+    "available_year_min": 1960,
+    "available_year_max": 2025,
+    "economies_any_year": 217,
+    "observed_rows_full_published_range": 14292
+  },
+  {
+    "variable": "age_0_14",
+    "code": "SP.POP.0014.TO.ZS",
+    "id": "SP.POP.0014.TO.ZS",
+    "name": "Population ages 0-14 (% of total population)",
+    "unit": "",
+    "source": {
+      "id": "2",
+      "value": "World Development Indicators"
+    },
+    "sourceNote": "Population between the ages 0 to 14 as a percentage of the total population. Population is based on the de facto definition of population.",
+    "sourceOrganization": "United Nations Population Division. World Population Prospects., United Nations Population Division, uri: https://population.un.org/wpp/, publisher: United Nations Population Division",
+    "topics": [
+      {
+        "id": "4",
+        "value": "Education "
+      },
+      {
+        "id": "8",
+        "value": "Health "
+      }
+    ],
+    "available_year_min": 1960,
+    "available_year_max": 2025,
+    "economies_any_year": 217,
+    "observed_rows_full_published_range": 14322
+  },
+  {
+    "variable": "age_15_64",
+    "code": "SP.POP.1564.TO.ZS",
+    "id": "SP.POP.1564.TO.ZS",
+    "name": "Population ages 15-64 (% of total population)",
+    "unit": "",
+    "source": {
+      "id": "2",
+      "value": "World Development Indicators"
+    },
+    "sourceNote": "Total population between the ages 15 to 64 as a percentage of the total population. Population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship.",
+    "sourceOrganization": "World Population Prospects, United Nations (UN), publisher: UN Population Division",
+    "topics": [
+      {
+        "id": "4",
+        "value": "Education "
+      },
+      {
+        "id": "8",
+        "value": "Health "
+      }
+    ],
+    "available_year_min": 1960,
+    "available_year_max": 2025,
+    "economies_any_year": 217,
+    "observed_rows_full_published_range": 14322
+  },
+  {
+    "variable": "age_65_plus",
+    "code": "SP.POP.65UP.TO.ZS",
+    "id": "SP.POP.65UP.TO.ZS",
+    "name": "Population ages 65 and above (% of total population)",
+    "unit": "",
+    "source": {
+      "id": "2",
+      "value": "World Development Indicators"
+    },
+    "sourceNote": "Population ages 65 and above as a percentage of the total population. Population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship.",
+    "sourceOrganization": "World Population Prospects, United Nations (UN), publisher: UN Population Division",
+    "topics": [
+      {
+        "id": "8",
+        "value": "Health "
+      }
+    ],
+    "available_year_min": 1960,
+    "available_year_max": 2025,
+    "economies_any_year": 217,
+    "observed_rows_full_published_range": 14322
+  },
+  {
+    "variable": "fertility",
+    "code": "SP.DYN.TFRT.IN",
+    "id": "SP.DYN.TFRT.IN",
+    "name": "Fertility rate, total (births per woman)",
+    "unit": "",
+    "source": {
+      "id": "2",
+      "value": "World Development Indicators"
+    },
+    "sourceNote": "Total fertility rate represents the number of children that would be born to a woman if she were to live to the end of her childbearing years and bear children in accordance with age-specific fertility rates of the specified year.",
+    "sourceOrganization": "World Population Prospects, United Nations (UN), publisher: UN Population Division;\nStatistical databases and publications from national statistical offices, National Statistical Offices (NSOs);\nDemographic Statistics, Eurostat (ESTAT)",
+    "topics": [
+      {
+        "id": "8",
+        "value": "Health "
+      },
+      {
+        "id": "17",
+        "value": "Gender"
+      }
+    ],
+    "available_year_min": 1960,
+    "available_year_max": 2024,
+    "economies_any_year": 217,
+    "observed_rows_full_published_range": 14073
+  },
+  {
+    "variable": "gdp_ppp",
+    "code": "NY.GDP.PCAP.PP.KD",
+    "id": "NY.GDP.PCAP.PP.KD",
+    "name": "GDP per capita, PPP (constant 2021 international $)",
+    "unit": "",
+    "source": {
+      "id": "2",
+      "value": "World Development Indicators"
+    },
+    "sourceNote": "This indicator provides values for gross domestic product (GDP) per person expressed in constant international dollars, converted by purchasing power parities (PPPs). PPPs account for the different price levels across countries and thus PPP-based comparisons of economic output are more appropriate for comparing the output of economies and the average material well-being of their inhabitants than exchange-rate based comparisons. \n\nGross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. The core indicator has been divided by the general population to achieve a per capita estimate. This indicator is expressed in constant prices, meaning the series has been adjusted to account for price changes over time. The reference year for this adjustment is 2021. The PPP conversion factor is a currency conversion factor and a spatial price deflator. PPPs convert different currencies to a common currency and, in the process of conversion, equalize their purchasing power by eliminating the differences in price levels between countries, thereby allowing volume or output comparisons of GDP and its expenditure components.",
+    "sourceOrganization": "International Comparison Program (ICP), World Bank (WB), uri: https://www.worldbank.org/en/programs/icp/data, note: This information is for ICP’s PPPs utilized in WDI, publisher: International Comparison Program (ICP), date accessed: May 30, 2024, date published: May 30, 2024;\nThe Eurostat PPP Programme, Eurostat (ESTAT), uri: https://ec.europa.eu/eurostat/databrowser/explore/all/all_themes, publisher: Eurostat;\nThe OECD PPP Programme, Organisation for Economic Co-operation and Development (OECD), uri: https://data-explorer.oecd.org/, publisher: OECD;\nStaff estimates, World Bank (WB);\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nWorld Economic Outlook database, International Monetary Fund (IMF)",
+    "topics": [
+      {
+        "id": "3",
+        "value": "Economy & Growth"
+      }
+    ],
+    "available_year_min": 1990,
+    "available_year_max": 2025,
+    "economies_any_year": 199,
+    "observed_rows_full_published_range": 6977
+  },
+  {
+    "variable": "lfpr",
+    "code": "SL.TLF.CACT.ZS",
+    "id": "SL.TLF.CACT.ZS",
+    "name": "Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)",
+    "unit": "",
+    "source": {
+      "id": "2",
+      "value": "World Development Indicators"
+    },
+    "sourceNote": "Labor force participation rate is the proportion of the population ages 15 and older that is economically active: all people who supply labor for the production of goods and services during a specified period.",
+    "sourceOrganization": "ILO Modelled Estimates database (ILOEST), International Labour Organization (ILO), uri: https://ilostat.ilo.org/data/bulk/, publisher: ILOSTAT, type: external database, date accessed: January 17, 2026",
+    "topics": [
+      {
+        "id": "10",
+        "value": "Social Protection & Labor"
+      }
+    ],
+    "available_year_min": 1990,
+    "available_year_max": 2025,
+    "economies_any_year": 187,
+    "observed_rows_full_published_range": 6718
+  },
+  {
+    "variable": "employment",
+    "code": "SL.EMP.TOTL.SP.ZS",
+    "id": "SL.EMP.TOTL.SP.ZS",
+    "name": "Employment to population ratio, 15+, total (%) (modeled ILO estimate)",
+    "unit": "",
+    "source": {
+      "id": "2",
+      "value": "World Development Indicators"
+    },
+    "sourceNote": "Employment to population ratio is the proportion of a country's population that is employed.",
+    "sourceOrganization": "ILO Modelled Estimates database (ILOEST), International Labour Organization (ILO), uri: https://ilostat.ilo.org/data/bulk/, publisher: ILOSTAT, type: external database, date accessed: January 17, 2026",
+    "topics": [
+      {
+        "id": "10",
+        "value": "Social Protection & Labor"
+      }
+    ],
+    "available_year_min": 1991,
+    "available_year_max": 2025,
+    "economies_any_year": 187,
+    "observed_rows_full_published_range": 6531
+  }
+]

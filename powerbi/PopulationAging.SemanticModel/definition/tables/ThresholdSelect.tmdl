@@ -1,0 +1,14 @@
+table ThresholdSelect
+	lineageTag: 6015d6cc-e04b-4446-aa6c-c8982ba529c4
+
+	column threshold
+		dataType: int64
+		formatString: 0
+		lineageTag: f06a2489-b1d5-4a53-8f37-7c5322b7fba0
+		summarizeBy: none
+		sourceColumn: threshold
+
+	partition ThresholdSelect = m
+		mode: import
+		source = Table.FromColumns({{8,10,12}}, type table [threshold=Int64.Type])
+

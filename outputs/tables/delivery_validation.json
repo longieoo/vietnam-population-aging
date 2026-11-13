@@ -1,0 +1,17 @@
+{
+  "snapshot_id": "f802111fa64f0c25",
+  "source_files_verified": 98,
+  "unique_rows": 7161,
+  "vietnam_source_values_matched": 16,
+  "executed_code_cells": 7,
+  "principal_png_figures": 12,
+  "principal_svg_figures": 12,
+  "native_charts_checked_against_tables": 11,
+  "embedded_workbooks": 11,
+  "headline_values_traced": 6,
+  "raw_indicator_cells_checked": 57288,
+  "derived_formulas_checked": 4,
+  "notebook_master_sha256": "6a65ae1082c04fa4726874952853c01eae83b69e942c8ace5d792b961271f6a5",
+  "demographic_insights_checked": 10,
+  "status": "passed"
+}

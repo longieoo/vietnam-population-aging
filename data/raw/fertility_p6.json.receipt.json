@@ -1,0 +1,7 @@
+{
+  "url": "https://api.worldbank.org/v2/country/all/indicator/SP.DYN.TFRT.IN?format=json&per_page=2000&page=6&source=2",
+  "retrieved_utc": "2026-09-21T19:52:06.664423+00:00",
+  "sha256": "8221c0be7542b5986c1ffd7c2682fe47da5a6e443cabf719dc6e135a649a6d97",
+  "bytes": 441617,
+  "path": "data/raw/fertility_p6.json"
+}

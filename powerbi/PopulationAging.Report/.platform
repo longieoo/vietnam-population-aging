@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "PopulationAging"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "809c60ea-b12e-4db9-8407-19eb8bf07260"
+  }
+}

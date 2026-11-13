@@ -1,0 +1,8 @@
+# Core offline analysis: tables, figures, validation and interactive HTML.
+# CPython 3.12+; pinned to the delivered environment.
+pandas==3.0.1
+numpy==2.5.3
+matplotlib==3.11.2
+plotly==7.1.0
+pyshp==3.1.6
+nbformat==5.11.1

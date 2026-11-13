@@ -1,0 +1,7 @@
+{
+  "url": "https://api.worldbank.org/v2/indicator/NY.GDP.PCAP.PP.KD?format=json&per_page=2000&page=1&source=2",
+  "retrieved_utc": "2026-09-21T19:55:34.789153+00:00",
+  "sha256": "0fc948a74b955ad1d3dff834c7aaa96afc54e86d6c22638c83f5187130977c3f",
+  "bytes": 2446,
+  "path": "data/raw/metadata_gdp_ppp_p1.json"
+}

@@ -1,0 +1,400 @@
+table Metrics
+	lineageTag: cc81f2e9-f327-47b9-a8df-9a1347bb1448
+
+	measure 'Năm đang xem' = SELECTEDVALUE(SelectedYear[year], 2023)
+		formatString: 0
+		displayFolder: Bộ lọc
+		lineageTag: 4e28c5e1-2968-4504-b65a-736dfdbab7fd
+
+	measure 'ISO quốc gia trọng tâm' = SELECTEDVALUE(FocusCountry[iso3], "VNM")
+		displayFolder: Bộ lọc
+		lineageTag: 7200a1cf-3f54-47eb-b844-b6583aeb675f
+
+	measure 'Quốc gia trọng tâm' = SELECTEDVALUE(FocusCountry[Quốc gia], "Việt Nam")
+		displayFolder: Bộ lọc
+		lineageTag: 92da9eed-d95e-43ae-8e02-79e7a1b165d5
+
+	measure 'Dân số' = IF(HASONEVALUE(DimYear[year]), SUM(Master[population]))
+		formatString: #,0
+		displayFolder: Gốc
+		lineageTag: d944ba6b-a7cd-4b9c-b155-330c8add33b4
+
+	measure 'Dân số 65+' = IF(HASONEVALUE(DimYear[year]), SUM(Master[population_65_plus]))
+		formatString: #,0
+		displayFolder: Gốc
+		lineageTag: fee8b00b-effc-44eb-9e93-4a77eaa05814
+
+	measure '0–14 tuổi (%)' = IF(HASONEVALUE(DimYear[year]), DIVIDE(SUMX(Master, Master[population] * Master[age_0_14]), SUM(Master[population])))
+		formatString: 0.00"%"
+		displayFolder: Gốc
+		lineageTag: 9332057f-4ee8-4380-920f-7e13cf233831
+
+	measure '15–64 tuổi (%)' = IF(HASONEVALUE(DimYear[year]), DIVIDE(SUMX(Master, Master[population] * Master[age_15_64]), SUM(Master[population])))
+		formatString: 0.00"%"
+		displayFolder: Gốc
+		lineageTag: 1c54ff29-8ad5-4d22-bfdf-4491df23188d
+
+	measure '65+ tuổi (%)' = IF(HASONEVALUE(DimYear[year]), DIVIDE(SUMX(Master, Master[population] * Master[age_65_plus]), SUM(Master[population])))
+		formatString: 0.00"%"
+		displayFolder: Gốc
+		lineageTag: 77bca8a0-2996-4963-8f9f-3fa9e69582b7
+
+	measure 'Mức sinh' = IF(HASONEVALUE(DimCountry[iso3]) && HASONEVALUE(DimYear[year]), AVERAGE(Master[fertility]))
+		formatString: 0.00
+		displayFolder: Gốc
+		lineageTag: fc482714-2bc2-43c6-82d4-5b5ba1a4ab2a
+
+	measure 'GDP PPP/người' = IF(HASONEVALUE(DimCountry[iso3]) && HASONEVALUE(DimYear[year]), AVERAGE(Master[gdp_ppp]))
+		formatString: #,0.00
+		displayFolder: Gốc
+		lineageTag: 49c8c1b3-813c-48ef-b667-bdc598b960b2
+
+	measure 'Tham gia lao động (%)' = IF(HASONEVALUE(DimCountry[iso3]) && HASONEVALUE(DimYear[year]), AVERAGE(Master[lfpr]))
+		formatString: 0.00"%"
+		displayFolder: Gốc
+		lineageTag: c1cf8869-9fe8-47b0-a545-f4962645e718
+
+	measure 'Có việc làm (%)' = IF(HASONEVALUE(DimCountry[iso3]) && HASONEVALUE(DimYear[year]), AVERAGE(Master[employment]))
+		formatString: 0.00"%"
+		displayFolder: Gốc
+		lineageTag: 448d98ad-1035-42d1-893e-8ad3e23f0ca7
+
+	measure 'Phụ thuộc trẻ' = 100 * DIVIDE([0–14 tuổi (%)], [15–64 tuổi (%)])
+		formatString: 0.00
+		displayFolder: Gốc
+		lineageTag: 1d0f45de-0c8b-4934-b404-fe6b46c3c159
+
+	measure 'Phụ thuộc già' = 100 * DIVIDE([65+ tuổi (%)], [15–64 tuổi (%)])
+		formatString: 0.00
+		displayFolder: Gốc
+		lineageTag: af05fbaf-4424-43fe-9019-9e3603596feb
+
+	measure 'Tổng phụ thuộc' = [Phụ thuộc trẻ] + [Phụ thuộc già]
+		formatString: 0.00
+		displayFolder: Gốc
+		lineageTag: 0829a710-32e0-4a13-9810-cbd1191995f6
+
+	measure 'Chỉ số già hóa' = 100 * DIVIDE([65+ tuổi (%)], [0–14 tuổi (%)])
+		formatString: 0.00
+		displayFolder: Gốc
+		lineageTag: cafdc383-2de6-488c-b88d-a81f066cd42d
+
+	measure 'Trọng tâm · Dân số' = VAR c = [ISO quốc gia trọng tâm] VAR y = [Năm đang xem] RETURN CALCULATE([Dân số], REMOVEFILTERS(DimCountry), REMOVEFILTERS(DimYear), TREATAS({c}, DimCountry[iso3]), TREATAS({y}, DimYear[year]))
+		formatString: #,0
+		displayFolder: Tổng quan
+		lineageTag: 2dec83bc-87f7-4467-87b4-2579ad33e0e4
+
+	measure 'Lịch sử · Dân số' = VAR c = [ISO quốc gia trọng tâm] RETURN IF(MAX(DimYear[year]) <= [Năm đang xem], CALCULATE([Dân số], REMOVEFILTERS(DimCountry), TREATAS({c}, DimCountry[iso3])))
+		formatString: #,0
+		displayFolder: Lịch sử
+		lineageTag: 53cf8cc8-c7b1-4795-9c40-ab924dc532d0
+
+	measure 'So sánh · Dân số' = VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]) && MAX(DimYear[year]) <= [Năm đang xem], [Dân số])
+		formatString: #,0
+		displayFolder: So sánh
+		lineageTag: b13d0660-93b3-4b53-b85e-4e00a7db43cd
+
+	measure 'Hiện trạng · Dân số' = VAR y = [Năm đang xem] RETURN CALCULATE([Dân số], REMOVEFILTERS(DimYear), TREATAS({y}, DimYear[year]))
+		formatString: #,0
+		displayFolder: Hiện trạng
+		lineageTag: 67b35aa8-602d-4f15-bb22-315ca78185db
+
+	measure 'Trọng tâm · Dân số 65+' = VAR c = [ISO quốc gia trọng tâm] VAR y = [Năm đang xem] RETURN CALCULATE([Dân số 65+], REMOVEFILTERS(DimCountry), REMOVEFILTERS(DimYear), TREATAS({c}, DimCountry[iso3]), TREATAS({y}, DimYear[year]))
+		formatString: #,0
+		displayFolder: Tổng quan
+		lineageTag: 1c2893a3-451a-4874-b34e-3d367bc3dfe1
+
+	measure 'Lịch sử · Dân số 65+' = VAR c = [ISO quốc gia trọng tâm] RETURN IF(MAX(DimYear[year]) <= [Năm đang xem], CALCULATE([Dân số 65+], REMOVEFILTERS(DimCountry), TREATAS({c}, DimCountry[iso3])))
+		formatString: #,0
+		displayFolder: Lịch sử
+		lineageTag: 0317a750-0d04-4fcd-92c2-5d83eec6376a
+
+	measure 'So sánh · Dân số 65+' = VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]) && MAX(DimYear[year]) <= [Năm đang xem], [Dân số 65+])
+		formatString: #,0
+		displayFolder: So sánh
+		lineageTag: 55557108-8bee-416d-a51d-84b683dd4dea
+
+	measure 'Hiện trạng · Dân số 65+' = VAR y = [Năm đang xem] RETURN CALCULATE([Dân số 65+], REMOVEFILTERS(DimYear), TREATAS({y}, DimYear[year]))
+		formatString: #,0
+		displayFolder: Hiện trạng
+		lineageTag: d400d1f2-d8be-498f-ba49-1bce5ab2b996
+
+	measure 'Trọng tâm · 0–14 tuổi (%)' = VAR c = [ISO quốc gia trọng tâm] VAR y = [Năm đang xem] RETURN CALCULATE([0–14 tuổi (%)], REMOVEFILTERS(DimCountry), REMOVEFILTERS(DimYear), TREATAS({c}, DimCountry[iso3]), TREATAS({y}, DimYear[year]))
+		formatString: 0.00"%"
+		displayFolder: Tổng quan
+		lineageTag: 26ca414f-7051-4d2d-8103-85d4b1b11136
+
+	measure 'Lịch sử · 0–14 tuổi (%)' = VAR c = [ISO quốc gia trọng tâm] RETURN IF(MAX(DimYear[year]) <= [Năm đang xem], CALCULATE([0–14 tuổi (%)], REMOVEFILTERS(DimCountry), TREATAS({c}, DimCountry[iso3])))
+		formatString: 0.00"%"
+		displayFolder: Lịch sử
+		lineageTag: 1dca04ce-38f8-4477-a551-36312df36a29
+
+	measure 'So sánh · 0–14 tuổi (%)' = VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]) && MAX(DimYear[year]) <= [Năm đang xem], [0–14 tuổi (%)])
+		formatString: 0.00"%"
+		displayFolder: So sánh
+		lineageTag: c299dc67-194b-4d0b-af23-2457cd271ae3
+
+	measure 'Hiện trạng · 0–14 tuổi (%)' = VAR y = [Năm đang xem] RETURN CALCULATE([0–14 tuổi (%)], REMOVEFILTERS(DimYear), TREATAS({y}, DimYear[year]))
+		formatString: 0.00"%"
+		displayFolder: Hiện trạng
+		lineageTag: 52c19d02-6035-45a3-a363-74af89f83472
+
+	measure 'Trọng tâm · 15–64 tuổi (%)' = VAR c = [ISO quốc gia trọng tâm] VAR y = [Năm đang xem] RETURN CALCULATE([15–64 tuổi (%)], REMOVEFILTERS(DimCountry), REMOVEFILTERS(DimYear), TREATAS({c}, DimCountry[iso3]), TREATAS({y}, DimYear[year]))
+		formatString: 0.00"%"
+		displayFolder: Tổng quan
+		lineageTag: b0a5e5c6-9c58-45f6-9a44-0f8c82e46376
+
+	measure 'Lịch sử · 15–64 tuổi (%)' = VAR c = [ISO quốc gia trọng tâm] RETURN IF(MAX(DimYear[year]) <= [Năm đang xem], CALCULATE([15–64 tuổi (%)], REMOVEFILTERS(DimCountry), TREATAS({c}, DimCountry[iso3])))
+		formatString: 0.00"%"
+		displayFolder: Lịch sử
+		lineageTag: e435598f-06e0-48f5-b523-1cbdaee6b23f
+
+	measure 'So sánh · 15–64 tuổi (%)' = VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]) && MAX(DimYear[year]) <= [Năm đang xem], [15–64 tuổi (%)])
+		formatString: 0.00"%"
+		displayFolder: So sánh
+		lineageTag: d1372cd7-d727-4347-b548-93e95e44100b
+
+	measure 'Hiện trạng · 15–64 tuổi (%)' = VAR y = [Năm đang xem] RETURN CALCULATE([15–64 tuổi (%)], REMOVEFILTERS(DimYear), TREATAS({y}, DimYear[year]))
+		formatString: 0.00"%"
+		displayFolder: Hiện trạng
+		lineageTag: 7fd6f86c-be1e-4aae-8563-fe628b1425db
+
+	measure 'Trọng tâm · 65+ tuổi (%)' = VAR c = [ISO quốc gia trọng tâm] VAR y = [Năm đang xem] RETURN CALCULATE([65+ tuổi (%)], REMOVEFILTERS(DimCountry), REMOVEFILTERS(DimYear), TREATAS({c}, DimCountry[iso3]), TREATAS({y}, DimYear[year]))
+		formatString: 0.00"%"
+		displayFolder: Tổng quan
+		lineageTag: dc6ca485-50d1-4207-b904-7684d689972e
+
+	measure 'Lịch sử · 65+ tuổi (%)' = VAR c = [ISO quốc gia trọng tâm] RETURN IF(MAX(DimYear[year]) <= [Năm đang xem], CALCULATE([65+ tuổi (%)], REMOVEFILTERS(DimCountry), TREATAS({c}, DimCountry[iso3])))
+		formatString: 0.00"%"
+		displayFolder: Lịch sử
+		lineageTag: df017b07-b932-4cc1-92e4-8b46c9d4e044
+
+	measure 'So sánh · 65+ tuổi (%)' = VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]) && MAX(DimYear[year]) <= [Năm đang xem], [65+ tuổi (%)])
+		formatString: 0.00"%"
+		displayFolder: So sánh
+		lineageTag: 63be0fb8-273f-4009-acbe-60496561d8a8
+
+	measure 'Hiện trạng · 65+ tuổi (%)' = VAR y = [Năm đang xem] RETURN CALCULATE([65+ tuổi (%)], REMOVEFILTERS(DimYear), TREATAS({y}, DimYear[year]))
+		formatString: 0.00"%"
+		displayFolder: Hiện trạng
+		lineageTag: 5c2ec6e2-a5e7-4fdd-9f70-d6c069e695fb
+
+	measure 'Trọng tâm · Mức sinh' = VAR c = [ISO quốc gia trọng tâm] VAR y = [Năm đang xem] RETURN CALCULATE([Mức sinh], REMOVEFILTERS(DimCountry), REMOVEFILTERS(DimYear), TREATAS({c}, DimCountry[iso3]), TREATAS({y}, DimYear[year]))
+		formatString: 0.00
+		displayFolder: Tổng quan
+		lineageTag: 1711c986-d4ab-42d8-9d8d-3ed72f6a646b
+
+	measure 'Lịch sử · Mức sinh' = VAR c = [ISO quốc gia trọng tâm] RETURN IF(MAX(DimYear[year]) <= [Năm đang xem], CALCULATE([Mức sinh], REMOVEFILTERS(DimCountry), TREATAS({c}, DimCountry[iso3])))
+		formatString: 0.00
+		displayFolder: Lịch sử
+		lineageTag: 82a202a0-7810-43be-8c86-7eb9c1f95158
+
+	measure 'So sánh · Mức sinh' = VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]) && MAX(DimYear[year]) <= [Năm đang xem], [Mức sinh])
+		formatString: 0.00
+		displayFolder: So sánh
+		lineageTag: 89e4b28c-c8fd-4f31-95ba-5b7ad26fe916
+
+	measure 'Hiện trạng · Mức sinh' = VAR y = [Năm đang xem] RETURN CALCULATE([Mức sinh], REMOVEFILTERS(DimYear), TREATAS({y}, DimYear[year]))
+		formatString: 0.00
+		displayFolder: Hiện trạng
+		lineageTag: 1d620b1b-b7f3-47a8-a743-7073c8fc54c2
+
+	measure 'Trọng tâm · GDP PPP/người' = VAR c = [ISO quốc gia trọng tâm] VAR y = [Năm đang xem] RETURN CALCULATE([GDP PPP/người], REMOVEFILTERS(DimCountry), REMOVEFILTERS(DimYear), TREATAS({c}, DimCountry[iso3]), TREATAS({y}, DimYear[year]))
+		formatString: #,0.00
+		displayFolder: Tổng quan
+		lineageTag: 0f186eaf-ba16-4ad8-b7af-0284469d87d9
+
+	measure 'Lịch sử · GDP PPP/người' = VAR c = [ISO quốc gia trọng tâm] RETURN IF(MAX(DimYear[year]) <= [Năm đang xem], CALCULATE([GDP PPP/người], REMOVEFILTERS(DimCountry), TREATAS({c}, DimCountry[iso3])))
+		formatString: #,0.00
+		displayFolder: Lịch sử
+		lineageTag: b2011e7e-55ea-4bad-a333-0e39f8ba51f4
+
+	measure 'So sánh · GDP PPP/người' = VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]) && MAX(DimYear[year]) <= [Năm đang xem], [GDP PPP/người])
+		formatString: #,0.00
+		displayFolder: So sánh
+		lineageTag: f5af58ad-e814-4d87-916a-54569a2eb4e8
+
+	measure 'Hiện trạng · GDP PPP/người' = VAR y = [Năm đang xem] RETURN CALCULATE([GDP PPP/người], REMOVEFILTERS(DimYear), TREATAS({y}, DimYear[year]))
+		formatString: #,0.00
+		displayFolder: Hiện trạng
+		lineageTag: 9bb88294-5dbe-4d6c-9897-78c948fc3dbd
+
+	measure 'Trọng tâm · Tham gia lao động (%)' = VAR c = [ISO quốc gia trọng tâm] VAR y = [Năm đang xem] RETURN CALCULATE([Tham gia lao động (%)], REMOVEFILTERS(DimCountry), REMOVEFILTERS(DimYear), TREATAS({c}, DimCountry[iso3]), TREATAS({y}, DimYear[year]))
+		formatString: 0.00"%"
+		displayFolder: Tổng quan
+		lineageTag: 7f5c1e99-c3e1-4f75-b5c9-8bfda2d154cb
+
+	measure 'Lịch sử · Tham gia lao động (%)' = VAR c = [ISO quốc gia trọng tâm] RETURN IF(MAX(DimYear[year]) <= [Năm đang xem], CALCULATE([Tham gia lao động (%)], REMOVEFILTERS(DimCountry), TREATAS({c}, DimCountry[iso3])))
+		formatString: 0.00"%"
+		displayFolder: Lịch sử
+		lineageTag: d3c341d7-c3fb-47f1-ba80-1e241a37e09e
+
+	measure 'So sánh · Tham gia lao động (%)' = VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]) && MAX(DimYear[year]) <= [Năm đang xem], [Tham gia lao động (%)])
+		formatString: 0.00"%"
+		displayFolder: So sánh
+		lineageTag: 1927c451-0e61-4919-b503-b8883f3bc212
+
+	measure 'Hiện trạng · Tham gia lao động (%)' = VAR y = [Năm đang xem] RETURN CALCULATE([Tham gia lao động (%)], REMOVEFILTERS(DimYear), TREATAS({y}, DimYear[year]))
+		formatString: 0.00"%"
+		displayFolder: Hiện trạng
+		lineageTag: f6e9c46e-11af-4dfa-836c-1eac7382ef54
+
+	measure 'Trọng tâm · Có việc làm (%)' = VAR c = [ISO quốc gia trọng tâm] VAR y = [Năm đang xem] RETURN CALCULATE([Có việc làm (%)], REMOVEFILTERS(DimCountry), REMOVEFILTERS(DimYear), TREATAS({c}, DimCountry[iso3]), TREATAS({y}, DimYear[year]))
+		formatString: 0.00"%"
+		displayFolder: Tổng quan
+		lineageTag: bd77277f-12b4-4b33-94ed-ea0dcd4c5ac3
+
+	measure 'Lịch sử · Có việc làm (%)' = VAR c = [ISO quốc gia trọng tâm] RETURN IF(MAX(DimYear[year]) <= [Năm đang xem], CALCULATE([Có việc làm (%)], REMOVEFILTERS(DimCountry), TREATAS({c}, DimCountry[iso3])))
+		formatString: 0.00"%"
+		displayFolder: Lịch sử
+		lineageTag: 977fb0ec-6fc2-414f-ac33-4aed20005683
+
+	measure 'So sánh · Có việc làm (%)' = VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]) && MAX(DimYear[year]) <= [Năm đang xem], [Có việc làm (%)])
+		formatString: 0.00"%"
+		displayFolder: So sánh
+		lineageTag: 0238847f-35d1-4d35-8a2b-da5c33e6921f
+
+	measure 'Hiện trạng · Có việc làm (%)' = VAR y = [Năm đang xem] RETURN CALCULATE([Có việc làm (%)], REMOVEFILTERS(DimYear), TREATAS({y}, DimYear[year]))
+		formatString: 0.00"%"
+		displayFolder: Hiện trạng
+		lineageTag: ad9d8c7d-613d-48c2-8733-57dab9d22a71
+
+	measure 'Trọng tâm · Phụ thuộc trẻ' = VAR c = [ISO quốc gia trọng tâm] VAR y = [Năm đang xem] RETURN CALCULATE([Phụ thuộc trẻ], REMOVEFILTERS(DimCountry), REMOVEFILTERS(DimYear), TREATAS({c}, DimCountry[iso3]), TREATAS({y}, DimYear[year]))
+		formatString: 0.00
+		displayFolder: Tổng quan
+		lineageTag: b60eac49-64fb-45e5-b49d-16e19197a005
+
+	measure 'Lịch sử · Phụ thuộc trẻ' = VAR c = [ISO quốc gia trọng tâm] RETURN IF(MAX(DimYear[year]) <= [Năm đang xem], CALCULATE([Phụ thuộc trẻ], REMOVEFILTERS(DimCountry), TREATAS({c}, DimCountry[iso3])))
+		formatString: 0.00
+		displayFolder: Lịch sử
+		lineageTag: 77dc5392-6466-4445-bebc-62e7d0f457ce
+
+	measure 'So sánh · Phụ thuộc trẻ' = VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]) && MAX(DimYear[year]) <= [Năm đang xem], [Phụ thuộc trẻ])
+		formatString: 0.00
+		displayFolder: So sánh
+		lineageTag: 30b0320e-7031-4681-889f-d9e30db04af1
+
+	measure 'Hiện trạng · Phụ thuộc trẻ' = VAR y = [Năm đang xem] RETURN CALCULATE([Phụ thuộc trẻ], REMOVEFILTERS(DimYear), TREATAS({y}, DimYear[year]))
+		formatString: 0.00
+		displayFolder: Hiện trạng
+		lineageTag: 80f6ff7b-48c7-44bd-9b98-9805529b4de1
+
+	measure 'Trọng tâm · Phụ thuộc già' = VAR c = [ISO quốc gia trọng tâm] VAR y = [Năm đang xem] RETURN CALCULATE([Phụ thuộc già], REMOVEFILTERS(DimCountry), REMOVEFILTERS(DimYear), TREATAS({c}, DimCountry[iso3]), TREATAS({y}, DimYear[year]))
+		formatString: 0.00
+		displayFolder: Tổng quan
+		lineageTag: 8dd87bbb-d71a-4282-b120-3854b359598e
+
+	measure 'Lịch sử · Phụ thuộc già' = VAR c = [ISO quốc gia trọng tâm] RETURN IF(MAX(DimYear[year]) <= [Năm đang xem], CALCULATE([Phụ thuộc già], REMOVEFILTERS(DimCountry), TREATAS({c}, DimCountry[iso3])))
+		formatString: 0.00
+		displayFolder: Lịch sử
+		lineageTag: cda282f0-afc4-4dab-847e-14874d1e505d
+
+	measure 'So sánh · Phụ thuộc già' = VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]) && MAX(DimYear[year]) <= [Năm đang xem], [Phụ thuộc già])
+		formatString: 0.00
+		displayFolder: So sánh
+		lineageTag: 387986ff-bd9c-4b9a-afe1-6e45d4aa593a
+
+	measure 'Hiện trạng · Phụ thuộc già' = VAR y = [Năm đang xem] RETURN CALCULATE([Phụ thuộc già], REMOVEFILTERS(DimYear), TREATAS({y}, DimYear[year]))
+		formatString: 0.00
+		displayFolder: Hiện trạng
+		lineageTag: a071caf7-2e70-45f3-b7fd-ec102a050880
+
+	measure 'Trọng tâm · Tổng phụ thuộc' = VAR c = [ISO quốc gia trọng tâm] VAR y = [Năm đang xem] RETURN CALCULATE([Tổng phụ thuộc], REMOVEFILTERS(DimCountry), REMOVEFILTERS(DimYear), TREATAS({c}, DimCountry[iso3]), TREATAS({y}, DimYear[year]))
+		formatString: 0.00
+		displayFolder: Tổng quan
+		lineageTag: dba65239-c64c-4781-ada6-1fec14d74dc2
+
+	measure 'Lịch sử · Tổng phụ thuộc' = VAR c = [ISO quốc gia trọng tâm] RETURN IF(MAX(DimYear[year]) <= [Năm đang xem], CALCULATE([Tổng phụ thuộc], REMOVEFILTERS(DimCountry), TREATAS({c}, DimCountry[iso3])))
+		formatString: 0.00
+		displayFolder: Lịch sử
+		lineageTag: 15dd619f-5e08-4bdb-84eb-0d3d9a2da3dc
+
+	measure 'So sánh · Tổng phụ thuộc' = VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]) && MAX(DimYear[year]) <= [Năm đang xem], [Tổng phụ thuộc])
+		formatString: 0.00
+		displayFolder: So sánh
+		lineageTag: 9bcbc05d-3a20-4ec2-a1c6-7bc706fb635b
+
+	measure 'Hiện trạng · Tổng phụ thuộc' = VAR y = [Năm đang xem] RETURN CALCULATE([Tổng phụ thuộc], REMOVEFILTERS(DimYear), TREATAS({y}, DimYear[year]))
+		formatString: 0.00
+		displayFolder: Hiện trạng
+		lineageTag: 2d3b17ef-b84b-4011-b2cd-dfc17abdfb8c
+
+	measure 'Trọng tâm · Chỉ số già hóa' = VAR c = [ISO quốc gia trọng tâm] VAR y = [Năm đang xem] RETURN CALCULATE([Chỉ số già hóa], REMOVEFILTERS(DimCountry), REMOVEFILTERS(DimYear), TREATAS({c}, DimCountry[iso3]), TREATAS({y}, DimYear[year]))
+		formatString: 0.00
+		displayFolder: Tổng quan
+		lineageTag: 2e0da61c-cb3d-4bb3-82bb-77a2bc4e8c46
+
+	measure 'Lịch sử · Chỉ số già hóa' = VAR c = [ISO quốc gia trọng tâm] RETURN IF(MAX(DimYear[year]) <= [Năm đang xem], CALCULATE([Chỉ số già hóa], REMOVEFILTERS(DimCountry), TREATAS({c}, DimCountry[iso3])))
+		formatString: 0.00
+		displayFolder: Lịch sử
+		lineageTag: 0e9bb976-bfc3-40a5-92c2-df948b65426a
+
+	measure 'So sánh · Chỉ số già hóa' = VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]) && MAX(DimYear[year]) <= [Năm đang xem], [Chỉ số già hóa])
+		formatString: 0.00
+		displayFolder: So sánh
+		lineageTag: d646b80c-159b-4854-a0dc-879fca24e249
+
+	measure 'Hiện trạng · Chỉ số già hóa' = VAR y = [Năm đang xem] RETURN CALCULATE([Chỉ số già hóa], REMOVEFILTERS(DimYear), TREATAS({y}, DimYear[year]))
+		formatString: 0.00
+		displayFolder: Hiện trạng
+		lineageTag: bd40b472-1261-429b-9dc2-82eb91a73903
+
+	measure 'Tốc độ già hóa (đpt/năm)' = VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]) && HASONEVALUE(PeriodChanges[period]), AVERAGE(PeriodChanges[annual_change_pp]))
+		formatString: 0.000
+		displayFolder: So sánh
+		lineageTag: 744c9a05-7990-43cb-b7ef-edea473fae3f
+
+	measure 'Màu tốc độ' = VAR v = [Tốc độ già hóa (đpt/năm)] RETURN IF(ISBLANK(v), BLANK(), SWITCH(TRUE(), v < 0, "#D9E9F2", v < 0.10, "#FBE6D7", v < 0.25, "#F7C6A2", v < 0.40, "#E98B55", "#C54B27"))
+		displayFolder: So sánh
+		lineageTag: 5980f894-d81d-4862-9114-20c872a77fc9
+
+	measure 'GDP tại ngưỡng' = VAR t = SELECTEDVALUE(ThresholdSelect[threshold], 10) VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]), CALCULATE(AVERAGE('Thresholds'[gdp_ppp]), 'Thresholds'[status] = "observed", TREATAS({t}, 'Thresholds'[threshold])))
+		formatString: #,0
+		displayFolder: Ngưỡng
+		lineageTag: 7022b88a-6d03-4ace-b6ae-3bb838ce3095
+
+	measure 'Năm đầu quan sát tại ngưỡng' = VAR t = SELECTEDVALUE(ThresholdSelect[threshold], 10) VAR c = SELECTEDVALUE(DimCountry[iso3]) RETURN IF(c IN VALUES(ComparisonCountry[iso3]), CALCULATE(MAX('Thresholds'[year]), 'Thresholds'[status] = "observed", TREATAS({t}, 'Thresholds'[threshold])))
+		formatString: 0
+		displayFolder: Ngưỡng
+		lineageTag: f5635650-a7e4-4454-ad40-7701a01d9448
+
+	measure 'Trạng thái ngưỡng' = VAR t = SELECTEDVALUE(ThresholdSelect[threshold], 10) VAR c = SELECTEDVALUE(DimCountry[iso3]) VAR s = CALCULATE(SELECTEDVALUE('Thresholds'[status]), TREATAS({t}, 'Thresholds'[threshold])) RETURN IF(c IN VALUES(ComparisonCountry[iso3]), SWITCH(s, "observed", "Quan sát được", "already_above", "Đã ở trên ngưỡng năm 1991", "not_reached", "Chưa đạt đến năm 2023", "gap_uncertain", "Khoảng trống dữ liệu", s))
+		displayFolder: Ngưỡng
+		lineageTag: 2bb1bebf-7cc0-4bb0-8fca-dbe4ac007cfa
+
+	measure 'Số quan sát · GDP' = COUNTROWS(FILTER(ADDCOLUMNS(ALLSELECTED(DimCountry[iso3]), "_x", [Hiện trạng · GDP PPP/người], "_y", [Hiện trạng · 65+ tuổi (%)]), NOT ISBLANK([_x]) && NOT ISBLANK([_y])))
+		formatString: 0
+		displayFolder: Mẫu
+		lineageTag: 5eec40eb-de83-43d3-a6df-d8a8ec34f2d8
+
+	measure 'Pearson r · GDP' = VAR pts = FILTER(ADDCOLUMNS(ALLSELECTED(DimCountry[iso3]), "_x", [Hiện trạng · GDP PPP/người], "_y", [Hiện trạng · 65+ tuổi (%)]), NOT ISBLANK([_x]) && NOT ISBLANK([_y])) VAR ax = AVERAGEX(pts, [_x]) VAR ay = AVERAGEX(pts, [_y]) RETURN DIVIDE(SUMX(pts, ([_x]-ax)*([_y]-ay)), SQRT(SUMX(pts, ([_x]-ax)^2)*SUMX(pts, ([_y]-ay)^2)))
+		formatString: 0.000
+		displayFolder: Mẫu
+		lineageTag: c94e726e-739c-4a63-affa-d6b9a13024f1
+
+	measure 'Số quan sát · lao động' = COUNTROWS(FILTER(ADDCOLUMNS(ALLSELECTED(DimCountry[iso3]), "_x", [Hiện trạng · 15–64 tuổi (%)], "_y", [Hiện trạng · Có việc làm (%)]), NOT ISBLANK([_x]) && NOT ISBLANK([_y])))
+		formatString: 0
+		displayFolder: Mẫu
+		lineageTag: 48d9c1de-7560-4f80-bd6d-86be242349f0
+
+	measure 'Pearson r · lao động' = VAR pts = FILTER(ADDCOLUMNS(ALLSELECTED(DimCountry[iso3]), "_x", [Hiện trạng · 15–64 tuổi (%)], "_y", [Hiện trạng · Có việc làm (%)]), NOT ISBLANK([_x]) && NOT ISBLANK([_y])) VAR ax = AVERAGEX(pts, [_x]) VAR ay = AVERAGEX(pts, [_y]) RETURN DIVIDE(SUMX(pts, ([_x]-ax)*([_y]-ay)), SQRT(SUMX(pts, ([_x]-ax)^2)*SUMX(pts, ([_y]-ay)^2)))
+		formatString: 0.000
+		displayFolder: Mẫu
+		lineageTag: fac79d49-98d4-4522-b7f4-c54bf69c1bb6
+
+	measure 'Số nền kinh tế' = COUNTROWS(VALUES(DimCountry[iso3]))
+		formatString: 0
+		displayFolder: Mẫu
+		lineageTag: 4e6de8dc-1d1a-4b46-a290-e9714960058b
+
+	column Value
+		dataType: int64
+		isHidden
+		lineageTag: 1e73d8cc-cfd1-4e80-920f-887d48d64a0c
+		summarizeBy: none
+		sourceColumn: Value
+
+	partition Metrics = m
+		mode: import
+		source = #table(type table [Value=Int64.Type], {{1}})
+

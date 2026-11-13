@@ -1,0 +1,7 @@
+{
+  "url": "https://api.worldbank.org/v2/country/all/indicator/SL.TLF.CACT.ZS?format=json&per_page=2000&page=3&source=2",
+  "retrieved_utc": "2026-09-21T19:57:04.306701+00:00",
+  "sha256": "ef70cfe9b670208d52285d8d3f8d11cb7141ab2385d503138a82a1489bf54627",
+  "bytes": 549303,
+  "path": "data/raw/lfpr_p3.json"
+}

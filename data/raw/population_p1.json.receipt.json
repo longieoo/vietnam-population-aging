@@ -1,0 +1,7 @@
+{
+  "url": "https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&per_page=2000&page=1&source=2",
+  "retrieved_utc": "2026-09-21T19:50:42.653321+00:00",
+  "sha256": "61a3846cb6b04bcd130c3469c8dbd4dbc98425e65bdba2d7f9aa96064050b60c",
+  "bytes": 432306,
+  "path": "data/raw/population_p1.json"
+}

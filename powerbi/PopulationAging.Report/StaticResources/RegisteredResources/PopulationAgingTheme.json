@@ -1,0 +1,24 @@
+{
+  "name": "Population Aging",
+  "dataColors": [
+    "#C54B27",
+    "#0072B2",
+    "#009E73",
+    "#8B62A6",
+    "#AD7D00",
+    "#516575"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#203444",
+  "tableAccent": "#C54B27",
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 14
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 11
+    }
+  }
+}

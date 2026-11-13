@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-12",
+  "status": "passed",
+  "python_modules": 12,
+  "python_tests": 21,
+  "javascript_syntax_checked": true,
+  "isolated_offline_build": "prepare → analyze → visualize → export_evidence → explore → tests",
+  "cross_artifact_check_after_build": "passed",
+  "preserved_sha256": {
+    "reports/report_submission.docx": "c271d3c0f004d029d6c7ebf9fbbf3a390183484dbdfa3a77086ec1699f97ba49",
+    "reports/report_submission.pdf": "ea1fc3b5bd90a8c2cc2cb1d5bd888b7a1018e87d2b62da7333ccf17cf8ba4f46",
+    "reports/report_submission.md": "f5021fc0c345d0d878cc5dcff18cb1319f983bdf2a65ae651729624805e4bcb0",
+    "data/processed/master.csv": "6a65ae1082c04fa4726874952853c01eae83b69e942c8ace5d792b961271f6a5",
+    "powerbi/PopulationAging.pbix": "ed4d8adf4d77cdcf4014f9296f47adceb8b3a85c1814272e62a0d1e1b819b195",
+    "slides/presentation.pptx": "97a0ccdf434175ce926e2a65c3cb1f2ed2ea399ce748f3f727c33cbf563a6278"
+  },
+  "authored_report_not_regenerated": true,
+  "source_guide": "src/README.md"
+}

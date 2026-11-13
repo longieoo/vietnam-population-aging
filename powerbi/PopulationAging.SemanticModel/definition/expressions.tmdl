@@ -1,0 +1,5 @@
+expression SourceRoot = "C:/Users/AD/Documents/Codex/2026-09-22/files-pasted-by-the-user-you/outputs/population-aging" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: ed0e909d02c71bc3d1da3a52f5e298ac
+
+	annotation PBI_ResultType = Text
+

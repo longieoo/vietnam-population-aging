@@ -1,0 +1,20 @@
+{
+  "snapshot_id": "f802111fa64f0c25",
+  "economies": 217,
+  "meaningful_rows": 7161,
+  "complete_age_shares": 7161,
+  "complete_demographic_rows": 7161,
+  "aging_gdp_rows": 6412,
+  "working_age_employment_rows": 6167,
+  "labor_both_rows": 6167,
+  "all_eight_complete_rows": 5780,
+  "year_min": 1991,
+  "year_max": 2023,
+  "aggregate_entities_excluded": 78,
+  "empty_eligible_entities": [],
+  "age_sum_max_absolute_error_pp": 0.00014273642860018754,
+  "age_sum_tolerance_pp": 0.15,
+  "range_errors": [],
+  "source_checks": 16,
+  "price_base": 2021
+}

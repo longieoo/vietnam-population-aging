@@ -1,0 +1,161 @@
+{
+  "vietnam_1991": {
+    "population": 66891775,
+    "age_0_14": 38.1034985243,
+    "age_15_64": 56.4081712587,
+    "age_65_plus": 5.48833021698,
+    "fertility": 3.524,
+    "gdp_ppp": 2560.84383496,
+    "lfpr": 78.062,
+    "employment": 76.391,
+    "population_65_plus": 3671241.5,
+    "child_dependency": 67.5496079274,
+    "old_dependency": 9.72967230547,
+    "total_dependency": 77.2792802329
+  },
+  "vietnam_2023": {
+    "population": 100352192,
+    "age_0_14": 23.6058472126,
+    "age_15_64": 67.7729868012,
+    "age_65_plus": 8.6211659862,
+    "fertility": 1.913,
+    "gdp_ppp": 13534.7997843,
+    "lfpr": 73.545,
+    "employment": 72.335,
+    "population_65_plus": 8651529.04311,
+    "child_dependency": 34.8307612321,
+    "old_dependency": 12.7206522733,
+    "total_dependency": 47.5514135054
+  },
+  "vietnam_working_age_peak_year": 2012,
+  "vietnam_dependency_min_year": 2012,
+  "vietnam_old_share_change_pp": 3.1328357692199997,
+  "vietnam_old_population_multiplier": 2.3565676742077577,
+  "vietnam_gdp_multiplier": 5.2852890127567695,
+  "sample_counts": {
+    "aging_2023": 217,
+    "gdp_aging_2023": 197,
+    "labor_2023": 184,
+    "balanced_aging_endpoints": 217
+  },
+  "global_distribution": [
+    {
+      "year": 1991,
+      "n": 217,
+      "unweighted_mean": 6.197268502783226,
+      "median": 4.1601547828,
+      "q25": 3.11411931674,
+      "q75": 9.11590051446,
+      "population_weighted_mean": 6.137621933372084
+    },
+    {
+      "year": 2023,
+      "n": 217,
+      "unweighted_mean": 10.301579782629492,
+      "median": 8.01054873196,
+      "q25": 4.04183293669,
+      "q75": 16.2818791222,
+      "population_weighted_mean": 9.957192099131504
+    }
+  ],
+  "robustness": [
+    {
+      "analysis": "gdp_aging_2023",
+      "restriction": "all",
+      "n": 197,
+      "pearson": 0.7217341891159539,
+      "spearman": 0.7503680752411718,
+      "x_transform": "natural_log"
+    },
+    {
+      "analysis": "gdp_aging_2023",
+      "restriction": "trim_5_95",
+      "n": 162,
+      "pearson": 0.7575702476479823,
+      "spearman": 0.7633485331538146,
+      "x_transform": "natural_log"
+    },
+    {
+      "analysis": "gdp_aging_2023",
+      "restriction": "exclude_population_under_1m",
+      "n": 153,
+      "pearson": 0.7320570244769594,
+      "spearman": 0.7467029874150616,
+      "x_transform": "natural_log"
+    },
+    {
+      "analysis": "labor_2023",
+      "restriction": "all",
+      "n": 184,
+      "pearson": 0.08073688734450006,
+      "spearman": 0.0669068212902853,
+      "x_transform": "none"
+    },
+    {
+      "analysis": "labor_2023",
+      "restriction": "trim_5_95",
+      "n": 148,
+      "pearson": 0.015608114713500053,
+      "spearman": 0.0674324509415593,
+      "x_transform": "none"
+    },
+    {
+      "analysis": "labor_2023",
+      "restriction": "exclude_population_under_1m",
+      "n": 156,
+      "pearson": 0.04803407797226497,
+      "spearman": 0.019908014730287176,
+      "x_transform": "none"
+    }
+  ],
+  "benchmark_sensitivity": [
+    {
+      "threshold": 8,
+      "n": 38,
+      "median_gdp": 17575.1739216,
+      "vietnam_year": 2022,
+      "vietnam_gdp": 12979.7638984,
+      "vietnam_percentile": 28.947368421052634
+    },
+    {
+      "threshold": 10,
+      "n": 39,
+      "median_gdp": 25372.2741481,
+      "vietnam_year": null,
+      "vietnam_gdp": null,
+      "vietnam_percentile": null
+    },
+    {
+      "threshold": 12,
+      "n": 43,
+      "median_gdp": 27825.0273493,
+      "vietnam_year": null,
+      "vietnam_gdp": null,
+      "vietnam_percentile": null
+    }
+  ],
+  "demographic_insights": {
+    "recent_start": 2010,
+    "recent_end": 2023,
+    "earlier_annual_change_pp": 0.029398015081578945,
+    "recent_annual_change_pp": 0.19802103712846153,
+    "global_recent_median_annual_change_pp": 0.1601282215953846,
+    "global_recent_economies": 217,
+    "recent_aging_change_pp": 2.57427348267,
+    "recent_fraction_of_full_change_pct": 82.17071280793412,
+    "working_age_decline_since_peak_pp": -2.128995657099992,
+    "dependency_increase_since_min": 4.4939543559000015,
+    "old_dependency_increase_since_peak": 4.006450678030001,
+    "child_dependency_increase_since_peak": 0.48750367790000126,
+    "old_dependency_fraction_of_rebound_pct": 89.15201091818014,
+    "lfpr_change_2019_2023_pp": -3.069999999999993,
+    "employment_change_2019_2023_pp": -2.9920000000000044,
+    "older_population_increase": 4980287.54311,
+    "population_component": 2360548.133091598,
+    "age_structure_component": 2619739.4100192464,
+    "age_structure_component_pct": 52.6021718092068,
+    "definition": "Symmetric two-factor accounting decomposition; not causal attribution",
+    "gdp_sample_population_coverage_pct": 98.19580851437726,
+    "labor_sample_population_coverage_pct": 98.80010462784435
+  }
+}

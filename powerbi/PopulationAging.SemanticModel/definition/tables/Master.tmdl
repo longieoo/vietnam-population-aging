@@ -1,0 +1,120 @@
+table Master
+	isHidden
+	lineageTag: 87192f96-8333-41df-92dd-be6ffbad3f9d
+
+	column iso3
+		dataType: string
+		lineageTag: 488d66ec-4925-4aa5-b980-9a26fe9b6526
+		summarizeBy: none
+		sourceColumn: iso3
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 905140cb-50f3-47b4-bc53-01ede1efe7d6
+		summarizeBy: none
+		sourceColumn: year
+
+	column population
+		dataType: int64
+		lineageTag: 9d46f5b5-d5a2-4d40-a2f8-5a704148a33b
+		summarizeBy: none
+		sourceColumn: population
+
+	column age_0_14
+		dataType: double
+		lineageTag: c4aca6ea-574b-42ad-a272-cb3f91a245ad
+		summarizeBy: none
+		sourceColumn: age_0_14
+
+	column age_15_64
+		dataType: double
+		lineageTag: 3e36c2b1-72b7-492b-a72a-fa7c7e15cf6c
+		summarizeBy: none
+		sourceColumn: age_15_64
+
+	column age_65_plus
+		dataType: double
+		lineageTag: b758cc64-9673-4293-a0fc-7baa74042626
+		summarizeBy: none
+		sourceColumn: age_65_plus
+
+	column fertility
+		dataType: double
+		lineageTag: 183eea40-e2d5-43ff-93b9-3cff8fe73e47
+		summarizeBy: none
+		sourceColumn: fertility
+
+	column gdp_ppp
+		dataType: double
+		lineageTag: c8cfc83d-c856-4aed-b246-e50a109106b1
+		summarizeBy: none
+		sourceColumn: gdp_ppp
+
+	column lfpr
+		dataType: double
+		lineageTag: ea219522-065a-4192-9c1d-0dbc040bf4f6
+		summarizeBy: none
+		sourceColumn: lfpr
+
+	column employment
+		dataType: double
+		lineageTag: 705054da-ca38-4816-9454-42e393585b09
+		summarizeBy: none
+		sourceColumn: employment
+
+	column country
+		dataType: string
+		lineageTag: 76d7d769-98ca-4d64-8ebb-a3a78d5e7380
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: country
+
+	column region
+		dataType: string
+		lineageTag: 3a830a6d-d143-42d3-90e4-35e45ace4b75
+		summarizeBy: none
+		sourceColumn: region
+
+	column income_group
+		dataType: string
+		lineageTag: 40c42cfb-5709-4e33-bf9c-089f34558c21
+		summarizeBy: none
+		sourceColumn: income_group
+
+	column population_65_plus
+		dataType: double
+		lineageTag: c1e0d547-fa7d-4dc2-b563-0fd86046473e
+		summarizeBy: none
+		sourceColumn: population_65_plus
+
+	column child_dependency
+		dataType: double
+		lineageTag: e79abbf7-4f22-4979-826c-32c887122215
+		summarizeBy: none
+		sourceColumn: child_dependency
+
+	column old_dependency
+		dataType: double
+		lineageTag: 806deb6c-e918-4472-b1af-a30199051a19
+		summarizeBy: none
+		sourceColumn: old_dependency
+
+	column total_dependency
+		dataType: double
+		lineageTag: 8d5d9324-5e61-41b4-a2d9-14b2e5d023ff
+		summarizeBy: none
+		sourceColumn: total_dependency
+
+	partition Master = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(SourceRoot & "/data/processed/master.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"iso3", type text}, {"year", Int64.Type}, {"population", Int64.Type}, {"age_0_14", type number}, {"age_15_64", type number}, {"age_65_plus", type number}, {"fertility", type number}, {"gdp_ppp", type number}, {"lfpr", type number}, {"employment", type number}, {"country", type text}, {"region", type text}, {"income_group", type text}, {"population_65_plus", type number}, {"child_dependency", type number}, {"old_dependency", type number}, {"total_dependency", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,428 @@
+[
+  {
+    "page": "overview",
+    "name": "title",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "overview",
+    "name": "subtitle",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "overview",
+    "name": "focus",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "overview",
+    "name": "year",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "overview",
+    "name": "region",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "overview",
+    "name": "income",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "overview",
+    "name": "source",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "overview",
+    "name": "KPIs",
+    "visualType": "cardVisual",
+    "title": null
+  },
+  {
+    "page": "overview",
+    "name": "age",
+    "visualType": "stackedAreaChart",
+    "title": "Cơ cấu dân số theo tuổi (%)"
+  },
+  {
+    "page": "overview",
+    "name": "dependency",
+    "visualType": "lineChart",
+    "title": "Tỷ số phụ thuộc (trên 100 người 15–64 tuổi)"
+  },
+  {
+    "page": "overview",
+    "name": "elderly_count",
+    "visualType": "lineChart",
+    "title": "Số người từ 65 tuổi trở lên (người)"
+  },
+  {
+    "page": "overview",
+    "name": "elderly_share",
+    "visualType": "lineChart",
+    "title": "Tỷ trọng người từ 65 tuổi trở lên (%)"
+  },
+  {
+    "page": "overview",
+    "name": "note",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "comparison",
+    "name": "title",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "comparison",
+    "name": "subtitle",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "comparison",
+    "name": "focus",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "comparison",
+    "name": "year",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "comparison",
+    "name": "region",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "comparison",
+    "name": "comparison",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "comparison",
+    "name": "source",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "comparison",
+    "name": "KPIs",
+    "visualType": "cardVisual",
+    "title": null
+  },
+  {
+    "page": "comparison",
+    "name": "compare_aging",
+    "visualType": "lineChart",
+    "title": "Tỷ trọng 65+ của nhóm đối chiếu (%)"
+  },
+  {
+    "page": "comparison",
+    "name": "fertility",
+    "visualType": "lineChart",
+    "title": "Tổng tỷ suất sinh (con/phụ nữ)"
+  },
+  {
+    "page": "comparison",
+    "name": "period_heatmap",
+    "visualType": "pivotTable",
+    "title": "Tốc độ già hóa theo giai đoạn (đpt/năm)"
+  },
+  {
+    "page": "comparison",
+    "name": "working_compare",
+    "visualType": "lineChart",
+    "title": "Dân số trong độ tuổi 15–64 của nhóm đối chiếu (%)"
+  },
+  {
+    "page": "comparison",
+    "name": "note",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "economy",
+    "name": "title",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "economy",
+    "name": "subtitle",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "economy",
+    "name": "focus",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "economy",
+    "name": "year",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "economy",
+    "name": "region",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "economy",
+    "name": "threshold",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "economy",
+    "name": "comparison",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "economy",
+    "name": "source",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "economy",
+    "name": "KPIs",
+    "visualType": "cardVisual",
+    "title": null
+  },
+  {
+    "page": "economy",
+    "name": "gdp_scatter",
+    "visualType": "scatterChart",
+    "title": "GDP PPP/người và tỷ trọng 65+ (trục GDP log)"
+  },
+  {
+    "page": "economy",
+    "name": "trajectory",
+    "visualType": "scatterChart",
+    "title": "Quỹ đạo quốc gia trọng tâm (mỗi điểm = một năm)"
+  },
+  {
+    "page": "economy",
+    "name": "threshold_gdp",
+    "visualType": "clusteredBarChart",
+    "title": "GDP PPP/người tại năm đầu quan sát vượt ngưỡng"
+  },
+  {
+    "page": "economy",
+    "name": "threshold_status",
+    "visualType": "tableEx",
+    "title": "Minh chứng trạng thái ngưỡng (1991–2023)"
+  },
+  {
+    "page": "economy",
+    "name": "note",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "labor",
+    "name": "title",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "labor",
+    "name": "subtitle",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "labor",
+    "name": "focus",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "labor",
+    "name": "year",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "labor",
+    "name": "region",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "labor",
+    "name": "income",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "labor",
+    "name": "source",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "labor",
+    "name": "KPIs",
+    "visualType": "cardVisual",
+    "title": null
+  },
+  {
+    "page": "labor",
+    "name": "labor_scatter",
+    "visualType": "scatterChart",
+    "title": "Tỷ trọng 15–64 và tỷ lệ dân số có việc làm (%)"
+  },
+  {
+    "page": "labor",
+    "name": "working_history",
+    "visualType": "lineChart",
+    "title": "Tỷ trọng dân số 15–64 tại quốc gia trọng tâm (%)"
+  },
+  {
+    "page": "labor",
+    "name": "labor_history",
+    "visualType": "lineChart",
+    "title": "Tham gia lao động và có việc làm (15+) (%)"
+  },
+  {
+    "page": "labor",
+    "name": "note",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "world",
+    "name": "title",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "world",
+    "name": "subtitle",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "world",
+    "name": "focus",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "world",
+    "name": "year",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "world",
+    "name": "region",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "world",
+    "name": "income",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "world",
+    "name": "source",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "world",
+    "name": "KPIs",
+    "visualType": "cardVisual",
+    "title": null
+  },
+  {
+    "page": "world",
+    "name": "world_map",
+    "visualType": "shapeMap",
+    "title": "Tỷ trọng 65+ (%) · màu đậm biểu thị tỷ trọng cao"
+  },
+  {
+    "page": "world",
+    "name": "snapshot_table",
+    "visualType": "tableEx",
+    "title": "Dữ liệu hiện trạng · chọn điểm/bảng để lọc chéo"
+  },
+  {
+    "page": "world",
+    "name": "note",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "guide",
+    "name": "title",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "guide",
+    "name": "subtitle",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "guide",
+    "name": "focus",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "guide",
+    "name": "year",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "guide",
+    "name": "region",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "guide",
+    "name": "income",
+    "visualType": "slicer",
+    "title": null
+  },
+  {
+    "page": "guide",
+    "name": "source",
+    "visualType": "textbox",
+    "title": null
+  },
+  {
+    "page": "guide",
+    "name": "guide_content",
+    "visualType": "textbox",
+    "title": null
+  }
+]

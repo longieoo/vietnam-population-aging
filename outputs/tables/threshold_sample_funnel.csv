@@ -1,0 +1,13 @@
+threshold,status,gdp_available,economies
+8,already_above,False,62
+8,not_reached,False,107
+8,observed,False,10
+8,observed,True,38
+10,already_above,False,48
+10,not_reached,False,124
+10,observed,False,6
+10,observed,True,39
+12,already_above,False,29
+12,not_reached,False,139
+12,observed,False,6
+12,observed,True,43

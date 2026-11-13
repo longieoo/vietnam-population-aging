@@ -1,0 +1,7 @@
+{
+  "url": "https://api.worldbank.org/v2/indicator/SP.POP.1564.TO.ZS?format=json&per_page=2000&page=1&source=2",
+  "retrieved_utc": "2026-09-21T19:50:40.859357+00:00",
+  "sha256": "dd29c2326d017c3262eb4da64f0d2aac0c9714c83a3fcc98ec4c5ff1d9296e28",
+  "bytes": 612,
+  "path": "data/raw/metadata_age_15_64_p1.json"
+}

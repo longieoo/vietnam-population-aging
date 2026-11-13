@@ -1,0 +1,177 @@
+geometry_name,mapped_iso3,matched,has_value
+Fiji,FJI,True,True
+Tanzania,TZA,True,True
+W. Sahara,ESH,False,False
+Canada,CAN,True,True
+United States of America,USA,True,True
+Kazakhstan,KAZ,True,True
+Uzbekistan,UZB,True,True
+Papua New Guinea,PNG,True,True
+Indonesia,IDN,True,True
+Argentina,ARG,True,True
+Chile,CHL,True,True
+Dem. Rep. Congo,COD,True,True
+Somalia,SOM,True,True
+Kenya,KEN,True,True
+Sudan,SDN,True,True
+Chad,TCD,True,True
+Haiti,HTI,True,True
+Dominican Rep.,DOM,True,True
+Russia,RUS,True,True
+Bahamas,BHS,True,True
+Falkland Is.,FLK,False,False
+Norway,NOR,True,True
+Greenland,GRL,True,True
+Fr. S. Antarctic Lands,ATF,False,False
+Timor-Leste,TLS,True,True
+South Africa,ZAF,True,True
+Lesotho,LSO,True,True
+Mexico,MEX,True,True
+Uruguay,URY,True,True
+Brazil,BRA,True,True
+Bolivia,BOL,True,True
+Peru,PER,True,True
+Colombia,COL,True,True
+Panama,PAN,True,True
+Costa Rica,CRI,True,True
+Nicaragua,NIC,True,True
+Honduras,HND,True,True
+El Salvador,SLV,True,True
+Guatemala,GTM,True,True
+Belize,BLZ,True,True
+Venezuela,VEN,True,True
+Guyana,GUY,True,True
+Suriname,SUR,True,True
+France,FRA,True,True
+Ecuador,ECU,True,True
+Puerto Rico,PRI,True,True
+Jamaica,JAM,True,True
+Cuba,CUB,True,True
+Zimbabwe,ZWE,True,True
+Botswana,BWA,True,True
+Namibia,NAM,True,True
+Senegal,SEN,True,True
+Mali,MLI,True,True
+Mauritania,MRT,True,True
+Benin,BEN,True,True
+Niger,NER,True,True
+Nigeria,NGA,True,True
+Cameroon,CMR,True,True
+Togo,TGO,True,True
+Ghana,GHA,True,True
+Côte d'Ivoire,CIV,True,True
+Guinea,GIN,True,True
+Guinea-Bissau,GNB,True,True
+Liberia,LBR,True,True
+Sierra Leone,SLE,True,True
+Burkina Faso,BFA,True,True
+Central African Rep.,CAF,True,True
+Congo,COG,True,True
+Gabon,GAB,True,True
+Eq. Guinea,GNQ,True,True
+Zambia,ZMB,True,True
+Malawi,MWI,True,True
+Mozambique,MOZ,True,True
+eSwatini,SWZ,True,True
+Angola,AGO,True,True
+Burundi,BDI,True,True
+Israel,ISR,True,True
+Lebanon,LBN,True,True
+Madagascar,MDG,True,True
+Palestine,PSE,True,True
+Gambia,GMB,True,True
+Tunisia,TUN,True,True
+Algeria,DZA,True,True
+Jordan,JOR,True,True
+United Arab Emirates,ARE,True,True
+Qatar,QAT,True,True
+Kuwait,KWT,True,True
+Iraq,IRQ,True,True
+Oman,OMN,True,True
+Vanuatu,VUT,True,True
+Cambodia,KHM,True,True
+Thailand,THA,True,True
+Laos,LAO,True,True
+Myanmar,MMR,True,True
+Vietnam,VNM,True,True
+North Korea,PRK,True,True
+South Korea,KOR,True,True
+Mongolia,MNG,True,True
+India,IND,True,True
+Bangladesh,BGD,True,True
+Bhutan,BTN,True,True
+Nepal,NPL,True,True
+Pakistan,PAK,True,True
+Afghanistan,AFG,True,True
+Tajikistan,TJK,True,True
+Kyrgyzstan,KGZ,True,True
+Turkmenistan,TKM,True,True
+Iran,IRN,True,True
+Syria,SYR,True,True
+Armenia,ARM,True,True
+Sweden,SWE,True,True
+Belarus,BLR,True,True
+Ukraine,UKR,True,True
+Poland,POL,True,True
+Austria,AUT,True,True
+Hungary,HUN,True,True
+Moldova,MDA,True,True
+Romania,ROU,True,True
+Lithuania,LTU,True,True
+Latvia,LVA,True,True
+Estonia,EST,True,True
+Germany,DEU,True,True
+Bulgaria,BGR,True,True
+Greece,GRC,True,True
+Turkey,TUR,True,True
+Albania,ALB,True,True
+Croatia,HRV,True,True
+Switzerland,CHE,True,True
+Luxembourg,LUX,True,True
+Belgium,BEL,True,True
+Netherlands,NLD,True,True
+Portugal,PRT,True,True
+Spain,ESP,True,True
+Ireland,IRL,True,True
+New Caledonia,NCL,True,True
+Solomon Is.,SLB,True,True
+New Zealand,NZL,True,True
+Australia,AUS,True,True
+Sri Lanka,LKA,True,True
+China,CHN,True,True
+Taiwan,TWN,False,False
+Italy,ITA,True,True
+Denmark,DNK,True,True
+United Kingdom,GBR,True,True
+Iceland,ISL,True,True
+Azerbaijan,AZE,True,True
+Georgia,GEO,True,True
+Philippines,PHL,True,True
+Malaysia,MYS,True,True
+Brunei,BRN,True,True
+Slovenia,SVN,True,True
+Finland,FIN,True,True
+Slovakia,SVK,True,True
+Czechia,CZE,True,True
+Eritrea,ERI,True,True
+Japan,JPN,True,True
+Paraguay,PRY,True,True
+Yemen,YEM,True,True
+Saudi Arabia,SAU,True,True
+N. Cyprus,CYN,False,False
+Cyprus,CYP,True,True
+Morocco,MAR,True,True
+Egypt,EGY,True,True
+Libya,LBY,True,True
+Ethiopia,ETH,True,True
+Djibouti,DJI,True,True
+Somaliland,SOL,False,False
+Uganda,UGA,True,True
+Rwanda,RWA,True,True
+Bosnia and Herz.,BIH,True,True
+North Macedonia,MKD,True,True
+Serbia,SRB,True,True
+Montenegro,MNE,True,True
+Kosovo,XKX,True,True
+Trinidad and Tobago,TTO,True,True
+S. Sudan,SSD,True,True

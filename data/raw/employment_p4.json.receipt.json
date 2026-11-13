@@ -1,0 +1,7 @@
+{
+  "url": "https://api.worldbank.org/v2/country/all/indicator/SL.EMP.TOTL.SP.ZS?format=json&per_page=2000&page=4&source=2",
+  "retrieved_utc": "2026-09-21T19:57:07.186729+00:00",
+  "sha256": "12d0496b2de00e8cdb5d44893909a9846701a0327e7db0dd70323e7085a5e963",
+  "bytes": 506467,
+  "path": "data/raw/employment_p4.json"
+}
