@@ -1,4 +1,4 @@
-# Dashboard bốn trang — bản nâng cấp 07/10/2026
+# Hướng dẫn dashboard web bốn trang
 
 Mở `outputs/interactive/explorer.html` bằng trình duyệt. Plotly và dữ liệu được nhúng trong HTML; không cần mạng hay máy chủ để sử dụng. Các liên kết nguồn bên ngoài cần mạng. Dựng lại bằng `python src/explore.py` hoặc `python run.py build`; đóng gói bằng `python run.py package`.
 
@@ -52,3 +52,7 @@ Phạm vi chưa bao gồm mọi tổ hợp bộ lọc, mọi trình duyệt, ho�
 ## Mã nguồn
 
 `explore.py` đóng gói dữ liệu bằng pandas và nhúng Plotly qua API xuất HTML chính thức. `dashboard_template.html` quản lý bố cục. `dashboard_model.js` chứa phép tính thuần dùng chung cho giao diện/kiểm tra Node. `dashboard_app.js` quản lý trạng thái, biểu đồ, nguồn và xuất CSV. Không bổ sung framework hoặc phụ thuộc Python mới.
+
+## Bảng dữ liệu và bàn phím
+
+Bảng nguồn chia trang 50 dòng; dùng Trước/Tiếp để xem toàn bộ mẫu, hoặc xuất CSV của biểu đồ. Đổi bộ lọc sẽ đưa bảng về trang đầu. Dùng Tab để tới nhóm trang, mũi tên trái/phải để chuyển trang, Home/End để tới trang đầu/cuối. Giá trị thiếu hiển thị trống hoặc dấu gạch; không được đổi thành 0. Khoảng tính tốc độ không hợp lệ có thông báo không có dữ liệu.

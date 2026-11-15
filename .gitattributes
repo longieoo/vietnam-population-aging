@@ -1,0 +1,3 @@
+# Source receipts and notebook provenance are byte hashes. Do not let a checkout
+# change line endings, even when the user's global core.autocrlf is enabled.
+* -text

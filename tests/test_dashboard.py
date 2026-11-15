@@ -61,6 +61,11 @@ class DashboardTests(unittest.TestCase):
             self.assertIn('id="tab-'+view+'"', self.html)
         self.assertEqual(self.payload['crossings'], json.loads(pd.read_csv(ROOT/'outputs/tables/threshold_crossings.csv').to_json(orient='records',force_ascii=False,double_precision=15)))
 
+    def test_keyboard_tabs_and_source_pagination_available(self):
+        for token in ['id="source-prev"', 'id="source-next"', 'id="source-page"', 'class="skip-link"', 'prefers-reduced-motion']:
+            self.assertIn(token, self.html)
+        self.assertEqual(self.html.count('tabindex="-1" aria-controls="dashboard"'), 3)
+
     def test_csv_fallbacks_match_the_named_fixed_samples(self):
         for name, fields in [('gdp',['gdp_ppp','age_65_plus']),('labor',['age_15_64','employment'])]:
             expected = self.master.loc[self.master.year.eq(2023)].dropna(subset=fields)

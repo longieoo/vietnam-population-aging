@@ -47,5 +47,43 @@ class PipelineTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'outside'):
                 package(root, root / 'recursive.zip')
 
+    def test_release_preserves_source_and_excludes_private_and_old_archives(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp) / 'project'
+            root.mkdir()
+            for name in ('.env', '.env.production', 'credentials.json', 'private.key', 'old.zip', 'debug.log'):
+                (root / name).write_text('private')
+            (root / 'requirements.lock').write_text('keep dependency lock')
+            (root / 'data/raw').mkdir(parents=True)
+            (root / 'data/raw/geography.zip').write_bytes(b'required raw source')
+            result = package(root)
+            self.assertFalse((root / 'delivery-manifest.json').exists())
+            with zipfile.ZipFile(result['archive']) as z:
+                self.assertEqual(set(z.namelist()), {'project/requirements.lock', 'project/data/raw/geography.zip', 'project/delivery-manifest.json'})
+
+    def test_archive_rejects_traversal_and_duplicate_manifest_paths(self):
+        for paths, message in [(['../outside'], 'Unsafe'), (['ok', 'ok'], 'Duplicate')]:
+            with self.subTest(paths=paths), tempfile.TemporaryDirectory() as temp:
+                archive = Path(temp) / 'invalid.zip'
+                manifest = {'schema_version': 1, 'files': [{'path': path, 'bytes': 0, 'sha256': ''} for path in paths]}
+                with zipfile.ZipFile(archive, 'w') as z:
+                    z.writestr('project/delivery-manifest.json', json.dumps(manifest))
+                with self.assertRaisesRegex(ValueError, message):
+                    verify_archive(archive)
+
+    def test_invalid_zip_has_actionable_error(self):
+        with tempfile.TemporaryDirectory() as temp:
+            archive = Path(temp) / 'invalid.zip'
+            archive.write_bytes(b'not a zip')
+            with self.assertRaisesRegex(ValueError, 'Invalid delivery archive'):
+                verify_archive(archive)
+
+    def test_failed_runner_cannot_finish_successfully(self):
+        with tempfile.TemporaryDirectory() as temp:
+            runner = Runner(Path(temp), env={})
+            runner.receipt['status'] = 'failed'
+            with self.assertRaisesRegex(RuntimeError, 'failed run'):
+                runner.finish()
+
 if __name__ == '__main__':
     unittest.main()

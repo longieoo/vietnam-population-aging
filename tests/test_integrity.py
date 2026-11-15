@@ -21,11 +21,12 @@ class IntegrityTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             (root / 'data/metadata').mkdir(parents=True)
-            source = root / 'source.json'
+            (root / 'data/raw').mkdir(parents=True)
+            source = root / 'data/raw/source.json'
             source.write_bytes(b'original')
-            manifest = {'files': [{'path': 'source.json', 'sha256': hashlib.sha256(b'original').hexdigest()}]}
+            manifest = {'files': [{'path': 'data/raw/source.json', 'bytes': len(b'original'), 'sha256': hashlib.sha256(b'original').hexdigest()}]}
             (root / 'data/metadata/source_manifest.json').write_text(json.dumps(manifest))
-            source.write_bytes(b'corrupted')
+            source.write_bytes(b'corrupt!')
             with patch.object(prepare, 'ROOT', root), self.assertRaisesRegex(ValueError, 'checksum mismatch'):
                 prepare.verify_snapshot()
 

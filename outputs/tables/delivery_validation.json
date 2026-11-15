@@ -6,8 +6,14 @@
   "executed_code_cells": 7,
   "principal_png_figures": 12,
   "principal_svg_figures": 12,
-  "native_charts_checked_against_tables": 11,
-  "embedded_workbooks": 11,
+  "presentation": {
+    "status": "not_applicable",
+    "reason": "Presentation is maintained on Canva; remote slide content is not validated locally.",
+    "native_charts_checked_against_tables": 0,
+    "embedded_workbooks": 0
+  },
+  "native_charts_checked_against_tables": 0,
+  "embedded_workbooks": 0,
   "headline_values_traced": 6,
   "raw_indicator_cells_checked": 57288,
   "derived_formulas_checked": 4,

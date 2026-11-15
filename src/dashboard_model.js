@@ -17,6 +17,8 @@
   const covered=p.filter(r=>valid(r.population)),pop=covered.reduce((s,r)=>s+r.population,0);
   return {n:p.length,total:rows.length,median:median(p.map(r=>r[key])),weighted:pop?covered.reduce((s,r)=>s+r[key]*r.population,0)/pop:null};
  }
+ const scaled=(value,divisor)=>valid(value)&&valid(divisor)&&divisor>0?value/divisor:null;
+ const page=(rows,index=0,size=50)=>{const count=Math.max(1,Math.ceil(rows.length/size)),current=Math.max(0,Math.min(count-1,index));return {rows:rows.slice(current*size,(current+1)*size),index:current,count,total:rows.length};};
  const change=(a,b,key)=>a&&b&&valid(a[key])&&valid(b[key])?b[key]-a[key]:null;
  function thresholdSample(crossings,threshold,codes){
   const all=crossings.filter(r=>r.threshold===threshold&&codes.has(r.iso3));
@@ -26,6 +28,6 @@
   const quote=v=>{let s=v==null?'':String(v);if(typeof v==='string'&&/^[\s]*[=+\-@]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"';};
   return '\ufeff'+[columns.map(quote).join(','),...rows.map(r=>columns.map(c=>quote(r[c])).join(','))].join('\r\n');
  }
- const api={valid,median,pair,correlation,sample,benchmark,change,thresholdSample,csv};
+ const api={valid,median,pair,correlation,sample,benchmark,change,thresholdSample,csv,scaled,page};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AgingModel=api;
 })(typeof window!=='undefined'?window:globalThis);

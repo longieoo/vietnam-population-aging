@@ -3,6 +3,7 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import importlib.util
+from importlib import metadata
 import json
 import logging
 import os
@@ -15,17 +16,28 @@ from config import ROOT
 
 LOG = logging.getLogger('aging')
 CORE = ('pandas', 'numpy', 'matplotlib', 'plotly', 'shapefile', 'nbformat')
-OPTIONAL = ('nbformat', 'nbclient', 'nbconvert', 'ipykernel')
+OPTIONAL = ('nbclient', 'nbconvert', 'ipykernel')
 
 def doctor():
     modules = {n: importlib.util.find_spec(n) is not None for n in (*CORE, *OPTIONAL)}
+    distributions = {name: ('pyshp' if name == 'shapefile' else name) for name in modules}
+    versions = {}
+    for name, distribution in distributions.items():
+        try:
+            versions[name] = metadata.version(distribution)
+        except metadata.PackageNotFoundError:
+            versions[name] = None
     result = {'python': sys.version.split()[0], 'python_executable': sys.executable,
-              'python_supported': sys.version_info >= (3, 12), 'modules': modules,
+              'python_supported': sys.version_info >= (3, 12), 'modules': modules, 'versions': versions,
+              'missing_core': [n for n in CORE if not modules[n]],
+              'missing_notebook_extras': [n for n in OPTIONAL if not modules[n]],
+              'install_core': 'python -m pip install -r requirements-core.txt',
+              'install_notebook_extras': 'python -m pip install -r requirements.txt',
               'powershell': shutil.which('pwsh') or shutil.which('powershell'),
               'word_pdf': 'Requires Windows and installed Microsoft Word; doctor does not launch Word',
               'source_manifest_exists': (ROOT / 'data/metadata/source_manifest.json').is_file()}
     print(json.dumps(result, ensure_ascii=False, indent=2))
-    return 0 if result['python_supported'] and all(modules[n] for n in CORE) else 1
+    return 0 if result['python_supported'] and not result['missing_core'] and result['source_manifest_exists'] else 1
 
 class Runner:
     def __init__(self, root=ROOT, env=None):
@@ -70,6 +82,8 @@ class Runner:
         self.run(Path(name).stem, [sys.executable, str(self.root / 'src' / name)], **kwargs)
 
     def finish(self):
+        if self.receipt['status'] == 'failed':
+            raise RuntimeError('Cannot mark a failed run as passed')
         self.receipt.update(status='passed', finished_at_utc=datetime.now(timezone.utc).isoformat())
         self.save()
         LOG.info('Completed. Receipt: %s', self.logs / 'build-receipt.json')
@@ -96,8 +110,9 @@ def build(args):
     if args.pdf == 'word':
         runner.run('word_pdf', [shell, '-NoProfile', '-File', str(ROOT / 'src/export_word_pdf.ps1')])
     runner.run('tests', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-v'])
+    runner.script('verify_delivery.py')
     runner.finish()
-    LOG.info('PPTX retained. Update charts in PowerPoint after changing analysis; check validates chart values.')
+    LOG.info('Authored report, Canva presentation and saved PBIX retained; review them when analysis changes.')
 
 def main(argv=None):
     logging.basicConfig(level=logging.INFO, format='%(levelname)s %(message)s')
@@ -115,10 +130,16 @@ def main(argv=None):
     commands.add_parser('powerbi', help='Rebuild editable native PBIP; close the project in Desktop first')
     p = commands.add_parser('package', help='Validate, create manifest and verify portable ZIP')
     p.add_argument('--output', type=Path, help='ZIP outside project; default sibling population-aging-complete.zip')
+    v = commands.add_parser('verify-archive', help='Check a downloaded ZIP against its embedded SHA256 manifest')
+    v.add_argument('archive', type=Path)
     args = parser.parse_args(argv)
     try:
         if args.command == 'doctor':
             return doctor()
+        if args.command == 'verify-archive':
+            from package_delivery import verify_archive
+            print(json.dumps({'archive': str(args.archive), 'files': verify_archive(args.archive), 'verified': True}))
+            return 0
         if args.command == 'build':
             build(args)
         elif args.command == 'powerbi':

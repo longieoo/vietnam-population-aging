@@ -1,4 +1,6 @@
-# Cập nhật kiểm tra — 07/10/2026
+> Biên bản lịch sử. Phạm vi kiểm tra mới nhất: [trạng thái dự án](current-status.md) và GitHub Actions.
+
+# Biên bản kiểm tra trước đây — 07/10/2026
 
 Dashboard được dựng lại từ master giữ nguyên SHA256. 21 kiểm thử Python đạt; kiểm tra thêm JavaScript về mẫu, tương quan, ngưỡng, trọng số, giá trị thiếu và CSV. Payload được đối chiếu toàn bộ cột số với master; hai chỉ số mới và ba CSV dự phòng có kiểm tra riêng.
 

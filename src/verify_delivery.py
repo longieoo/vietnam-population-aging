@@ -88,36 +88,9 @@ def verify_new_insights(master, summary):
     return len(expected)
 
 
-def main():
-    manifest = verify_snapshot()
-    master = pd.read_csv(ROOT / 'data/processed/master.csv')
-    raw_cells = verify_raw_values(master)
-    s = json.loads((ROOT / 'outputs/tables/analysis_summary.json').read_text())
-    q = json.loads((ROOT / 'outputs/tables/quality_summary.json').read_text())
-    if not (len(master) == q['meaningful_rows'] and master.iso3.nunique() == q['economies']):
-        raise ValueError("Delivery validation failed: len(master) == q['meaningful_rows'] and master.iso3.nunique() == q['economies']")
-    if not not master.duplicated(['iso3', 'year']).any():
-        raise ValueError("Delivery validation failed: not master.duplicated(['iso3', 'year']).any()")
-    checks = pd.read_csv(ROOT / 'outputs/tables/vietnam_source_checks.csv')
-    if not (checks.matches.all() and len(checks) == 16):
-        raise ValueError('Delivery validation failed: checks.matches.all() and len(checks) == 16')
-    notebook = nbformat.read(ROOT / 'notebooks/analysis.ipynb', as_version=4)
-    nbformat.validate(notebook)
-    master_sha = verify_notebook_provenance(notebook, ROOT / 'data/processed/master.csv', manifest['snapshot_id'])
-    insight_checks = verify_new_insights(master, s)
-    for filename, columns in [('gdp_aging_2023', ['gdp_ppp','age_65_plus']), ('labor_2023', ['age_15_64','employment'])]:
-        actual_sample = pd.read_csv(ROOT / f'outputs/tables/{filename}.csv').set_index('iso3').sort_index()
-        expected_sample = master.loc[master.year.eq(2023)].dropna(subset=columns).set_index('iso3').sort_index()
-        require(actual_sample.index.equals(expected_sample.index), 'Sample keys differ: '+filename)
-        for column in columns:
-            require(np.allclose(actual_sample[column], expected_sample[column], rtol=1e-10, atol=1e-10), 'Sample values differ: '+filename+'/'+column)
-
-    cells = [c for c in notebook.cells if c.cell_type == 'code']
-    if not all((c.execution_count is not None for c in cells)):
-        raise ValueError('Delivery validation failed: all((c.execution_count is not None for c in cells))')
-    if not not any((o.output_type == 'error' for c in cells for o in c.outputs)):
-        raise ValueError("Delivery validation failed: not any((o.output_type == 'error' for c in cells for o in c.outputs))")
-    with zipfile.ZipFile(ROOT / 'slides/presentation.pptx') as z:
+def verify_native_slides(master, path):
+    """Check editable PPTX chart caches when a native deck is supplied."""
+    with zipfile.ZipFile(path) as z:
         ns = {'c': 'http://schemas.openxmlformats.org/drawingml/2006/chart'}
         charts = sorted([n for n in z.namelist() if re.search('/charts/chart\\d+\\.xml$', n)], key=lambda n: int(re.search('chart(\\d+)\\.xml', n).group(1)))
         if not len(charts) == 11:
@@ -172,11 +145,53 @@ def main():
                 raise ValueError('Delivery validation failed: np.allclose(aa, ww, rtol=0, atol=5.1e-07)')
         if not len([n for n in z.namelist() if n.startswith('ppt/embeddings/') and n.endswith('.xlsx')]) == 11:
             raise ValueError("Delivery validation failed: len([n for n in z.namelist() if n.startswith('ppt/embeddings/') and n.endswith('.xlsx')]) == 11")
-    with zipfile.ZipFile(ROOT / 'slides/presentation.pptx') as z:
+    with zipfile.ZipFile(path) as z:
         tree = ET.fromstring(z.read(charts[10]))
         labor_x = [float(e.text) for e in tree.findall('.//c:ser/c:xVal//c:pt/c:v', ns)]
         labor = pd.read_csv(ROOT / 'outputs/tables/labor_2023.csv')
         require(len(labor_x) == len(labor) and np.allclose(labor_x, labor.age_15_64, rtol=0, atol=.00000051), 'Labor slide x coordinates differ')
+    return {'status': 'passed', 'native_charts_checked_against_tables': 11, 'embedded_workbooks': 11}
+
+
+def main():
+    manifest = verify_snapshot()
+    master = pd.read_csv(ROOT / 'data/processed/master.csv')
+    raw_cells = verify_raw_values(master)
+    s = json.loads((ROOT / 'outputs/tables/analysis_summary.json').read_text())
+    q = json.loads((ROOT / 'outputs/tables/quality_summary.json').read_text())
+    if not (len(master) == q['meaningful_rows'] and master.iso3.nunique() == q['economies']):
+        raise ValueError("Delivery validation failed: len(master) == q['meaningful_rows'] and master.iso3.nunique() == q['economies']")
+    if not not master.duplicated(['iso3', 'year']).any():
+        raise ValueError("Delivery validation failed: not master.duplicated(['iso3', 'year']).any()")
+    checks = pd.read_csv(ROOT / 'outputs/tables/vietnam_source_checks.csv')
+    if not (checks.matches.all() and len(checks) == 16):
+        raise ValueError('Delivery validation failed: checks.matches.all() and len(checks) == 16')
+    notebook = nbformat.read(ROOT / 'notebooks/analysis.ipynb', as_version=4)
+    nbformat.validate(notebook)
+    master_sha = verify_notebook_provenance(notebook, ROOT / 'data/processed/master.csv', manifest['snapshot_id'])
+    insight_checks = verify_new_insights(master, s)
+    for filename, columns in [('gdp_aging_2023', ['gdp_ppp','age_65_plus']), ('labor_2023', ['age_15_64','employment'])]:
+        actual_sample = pd.read_csv(ROOT / f'outputs/tables/{filename}.csv').set_index('iso3').sort_index()
+        expected_sample = master.loc[master.year.eq(2023)].dropna(subset=columns).set_index('iso3').sort_index()
+        require(actual_sample.index.equals(expected_sample.index), 'Sample keys differ: '+filename)
+        for column in columns:
+            require(np.allclose(actual_sample[column], expected_sample[column], rtol=1e-10, atol=1e-10), 'Sample values differ: '+filename+'/'+column)
+
+    funnel_path = ROOT / 'outputs/tables/threshold_sample_funnel.csv'
+    if funnel_path.exists():
+        bench = pd.read_csv(ROOT / 'outputs/tables/threshold_crossings.csv')
+        wanted = bench.assign(gdp_available=bench.gdp_ppp.notna()).groupby(['threshold', 'status', 'gdp_available']).size().rename('economies').reset_index()
+        require(pd.read_csv(funnel_path).equals(wanted), 'Threshold sample funnel mismatch')
+
+    cells = [c for c in notebook.cells if c.cell_type == 'code']
+    if not all((c.execution_count is not None for c in cells)):
+        raise ValueError('Delivery validation failed: all((c.execution_count is not None for c in cells))')
+    if not not any((o.output_type == 'error' for c in cells for o in c.outputs)):
+        raise ValueError("Delivery validation failed: not any((o.output_type == 'error' for c in cells for o in c.outputs))")
+    slide_path = ROOT / 'slides/presentation.pptx'
+    slides = verify_native_slides(master, slide_path) if slide_path.is_file() else {
+        'status': 'not_applicable', 'reason': 'Presentation is maintained on Canva; remote slide content is not validated locally.',
+        'native_charts_checked_against_tables': 0, 'embedded_workbooks': 0}
     from config import format_number as f
     text = (ROOT / 'reports/report_submission.md').read_text('utf-8')
     headlines = [s['vietnam_1991']['age_65_plus'], s['vietnam_2023']['age_65_plus'], s['vietnam_old_share_change_pp'], s['vietnam_gdp_multiplier'], s['robustness'][0]['pearson'], s['robustness'][3]['pearson']]
@@ -189,7 +204,7 @@ def main():
     evidence = pd.read_csv(ROOT / 'outputs/tables/evidence_table.csv')
     if not len(evidence) == 7:
         raise ValueError('Delivery validation failed: len(evidence) == 7')
-    result = {'snapshot_id': manifest['snapshot_id'], 'source_files_verified': len(manifest['files']), 'unique_rows': len(master), 'vietnam_source_values_matched': len(checks), 'executed_code_cells': len(cells), 'principal_png_figures': 12, 'principal_svg_figures': 12, 'native_charts_checked_against_tables': 11, 'embedded_workbooks': 11, 'headline_values_traced': len(headlines), 'raw_indicator_cells_checked': raw_cells, 'derived_formulas_checked': 4, 'notebook_master_sha256': master_sha, 'demographic_insights_checked': insight_checks, 'status': 'passed'}
+    result = {'snapshot_id': manifest['snapshot_id'], 'source_files_verified': len(manifest['files']), 'unique_rows': len(master), 'vietnam_source_values_matched': len(checks), 'executed_code_cells': len(cells), 'principal_png_figures': 12, 'principal_svg_figures': 12, 'presentation': slides, 'native_charts_checked_against_tables': slides['native_charts_checked_against_tables'], 'embedded_workbooks': slides['embedded_workbooks'], 'headline_values_traced': len(headlines), 'raw_indicator_cells_checked': raw_cells, 'derived_formulas_checked': 4, 'notebook_master_sha256': master_sha, 'demographic_insights_checked': insight_checks, 'status': 'passed'}
     (ROOT / 'outputs/tables/delivery_validation.json').write_text(json.dumps(result, indent=2), 'utf-8')
     print(json.dumps(result, indent=2))
 if __name__ == '__main__':

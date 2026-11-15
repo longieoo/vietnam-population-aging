@@ -35,6 +35,10 @@ python run.py package
 
 `build` dùng snapshot đã lưu, tạo lại dữ liệu, bảng, hình, minh chứng và dashboard web. Chỉ `build --acquire` gọi bước thu thập. Báo cáo Word, nội dung Markdown, bìa và kết luận đã biên tập được giữ nguyên. `build --pdf word` xuất PDF từ Word hiện có trên Windows; `build --notebook` chạy thêm notebook.
 
-Lệnh `powerbi` tạo lại PBIP và có thể ghi đè chỉnh sửa tay trong PBIP; đóng dự án trong Desktop trước khi chạy. PBIX đã nhập dữ liệu được giữ nguyên, cập nhật bằng Refresh và Save As trong Power BI Desktop. PowerPoint chỉnh sửa trực tiếp; sau khi đổi số liệu cần cập nhật slide rồi chạy `check`.
+Lệnh `powerbi` tạo lại PBIP và có thể ghi đè chỉnh sửa tay trong PBIP; đóng dự án trong Desktop trước khi chạy. PBIX đã nhập dữ liệu được giữ nguyên, cập nhật bằng Refresh và Save As trong Power BI Desktop. Slide hiện hành nằm trên Canva; cập nhật thủ công khi số liệu thay đổi. `check` không xác nhận nội dung Canva.
 
-Để chạy lại sau khi giải nén, giữ nguyên cấu trúc `src/`, `data/`, `outputs/`, `notebooks/`, `slides/`, `reports/`, `tests/` và `run.py`. `src/` riêng lẻ không chứa dữ liệu nguồn. Nhật ký nằm trong `work/` và không đưa vào ZIP.
+Để chạy lại sau khi giải nén, giữ nguyên cấu trúc `src/`, `data/`, `outputs/`, `notebooks/`, `reports/`, `tests/` và `run.py`. `src/` riêng lẻ không chứa dữ liệu nguồn. Nhật ký nằm trong `work/` và không đưa vào ZIP.
+
+## Kiểm tra bản bàn giao
+
+`python run.py verify-archive ../population-aging.zip` kiểm tra ZIP đã sao chép. Manifest nằm trong ZIP, không được tạo thêm vào cây mã nguồn. Kiểm thử giao diện thực hiện bằng `python scripts/check_dashboard.py` sau khi cài `requirements-dev.txt` và Chromium. `export_slides.ps1` là tiện ích tùy chọn khi tự tạo lại PPTX, không thuộc lệnh build mặc định.

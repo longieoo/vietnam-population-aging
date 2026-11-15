@@ -21,3 +21,10 @@ assert.equal(M.benchmark([{x:10,population:1},{x:20,population:3}],'x').median,1
 assert.equal(M.correlation([{x:1,y:2},{x:1,y:3},{x:1,y:4}],'x','y'),null);
 assert.ok(M.csv([{name:'=SUM(A1)',n:-3,missing:null}],['name','n','missing']).includes('"\'=SUM(A1)","-3",""'));
 console.log('Dashboard model: samples, correlations, threshold eligibility, nulls, weighting and CSV verified.');
+const assertExtra=require('node:assert/strict');
+assertExtra.equal(M.scaled(null,1e6),null);
+assertExtra.equal(M.scaled(0,1e6),0);
+assertExtra.equal(M.scaled(50,0),null);
+assertExtra.deepEqual(M.page([1,2,3,4,5],1,2),{rows:[3,4],index:1,count:3,total:5});
+assertExtra.deepEqual(M.page([],999),{rows:[],index:0,count:1,total:0});
+assertExtra.equal(M.page([1,2],9).index,0);

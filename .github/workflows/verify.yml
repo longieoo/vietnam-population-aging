@@ -1,0 +1,60 @@
+name: Verify analysis
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      MPLBACKEND: Agg
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements*.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Check Python correctness
+        run: python -m ruff check .
+      - name: Inspect runtime
+        run: python run.py doctor
+      - name: Reproduce from the saved snapshot
+        run: python run.py build
+      - name: Validate data and deliverables
+        run: python run.py check
+      - name: Test dashboard calculations
+        run: node --test tests/dashboard_model_test.cjs
+      - name: Install browser
+        run: python -m playwright install --with-deps chromium
+      - name: Test dashboard in Chromium
+        run: python scripts/check_dashboard.py --screenshots work/browser
+      - name: Create verified release
+        run: python run.py package --output ../vietnam-population-aging.zip
+      - name: Retain release and validation receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: population-aging-verified
+          path: |
+            ../vietnam-population-aging.zip
+            outputs/tables/delivery_validation.json
+            work/browser/
+            work/logs/
+          retention-days: 14
+

@@ -2,12 +2,16 @@
 import json
 import numpy as np
 import pandas as pd
-from config import ROOT, FOCAL
-from prepare import first_crossing, write_json
+from config import ROOT, FOCAL, YEARS
+from prepare import first_crossing, write_json, validate_master, require
 
 def demographic_insights(frame):
     """Endpoint identities, not causal estimates or extrapolated forecasts."""
     vn=frame.loc[frame.iso3.eq('VNM')].set_index('year')
+    required = ['population', 'age_65_plus', 'age_15_64', 'population_65_plus',
+                'total_dependency', 'old_dependency', 'child_dependency', 'lfpr', 'employment']
+    require(set(YEARS).issubset(vn.index), 'Vietnam demographic analysis requires all years 1991–2023')
+    require(vn.loc[YEARS, required].notna().all().all(), 'Vietnam demographic analysis has missing required values; do not publish incomplete findings')
     a,b=vn.loc[1991],vn.loc[2023]
     base=vn.loc[2010]
     peak=vn.loc[int(vn.age_15_64.idxmax())]
@@ -39,13 +43,14 @@ def demographic_insights(frame):
         'age_structure_component':float(age_structure_component),
         'age_structure_component_pct':float(age_structure_component/total*100),
         'definition':'Symmetric two-factor accounting decomposition; not causal attribution',
-        'gdp_sample_population_coverage_pct':float(all_end.loc[all_end.gdp_ppp.notna(),'population'].sum()/all_end.population.sum()*100),
-        'labor_sample_population_coverage_pct':float(all_end.loc[all_end.employment.notna(),'population'].sum()/all_end.population.sum()*100),
+        'gdp_sample_population_coverage_pct':float(all_end.dropna(subset=['gdp_ppp', 'age_65_plus']).population.sum()/all_end.population.sum()*100),
+        'labor_sample_population_coverage_pct':float(all_end.dropna(subset=['employment', 'age_15_64']).population.sum()/all_end.population.sum()*100),
     }
     return result
 
 def main():
     df = pd.read_csv(ROOT / 'data/processed/master.csv')
+    validate_master(df)
     out = ROOT / 'outputs/tables'
     focal = df[df.iso3.isin(FOCAL)].copy()
     focal.to_csv(out / 'focal_series.csv', index=False)
@@ -102,7 +107,7 @@ def main():
     # solely because contemporaneous GDP is missing.
     funnel=crossings.assign(gdp_available=crossings.gdp_ppp.notna()).groupby(['threshold','status','gdp_available'],dropna=False).size().rename('economies').reset_index()
     funnel.to_csv(out/'threshold_sample_funnel.csv',index=False)
-    end.reset_index().assign(in_gdp_sample=end.gdp_ppp.notna().to_numpy(),in_labor_sample=end.employment.notna().to_numpy()).groupby('region').agg(economies=('iso3','count'),gdp_sample=('in_gdp_sample','sum'),labor_sample=('in_labor_sample','sum')).to_csv(out/'sample_coverage_by_region.csv')
+    end.reset_index().assign(in_gdp_sample=end[['gdp_ppp', 'age_65_plus']].notna().all(axis=1).to_numpy(),in_labor_sample=end[['employment', 'age_15_64']].notna().all(axis=1).to_numpy()).groupby('region').agg(economies=('iso3','count'),gdp_sample=('in_gdp_sample','sum'),labor_sample=('in_labor_sample','sum')).to_csv(out/'sample_coverage_by_region.csv')
     write_json(out / 'analysis_summary.json', summary)
     print(json.dumps(summary, ensure_ascii=True, indent=2))
     return summary

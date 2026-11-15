@@ -11,11 +11,52 @@ def require(condition, message):
     if not condition:
         raise ValueError(message)
 
+def validate_master(frame, *, derived=True):
+    """Validate the analytical grain and units without imputing missing values.
+
+    Tolerances accommodate the twelve-significant-digit CSV serialization.
+    Missing source values are valid; missing identifiers and invented derived
+    values are not. This contract also runs when analyzing an edited CSV.
+    """
+    source_columns = list(INDICATORS)
+    required = ['iso3', 'year', 'country', 'region', 'income_group', *source_columns]
+    derived_columns = ['population_65_plus', 'child_dependency', 'old_dependency', 'total_dependency']
+    if derived:
+        required += derived_columns
+    require(frame.columns.is_unique, 'Duplicate column names')
+    require(set(required).issubset(frame.columns), f'Missing master columns: {sorted(set(required) - set(frame.columns))}')
+    require(not frame.empty, 'Master dataset is empty')
+    require(frame.iso3.notna().all() and frame.iso3.astype(str).str.fullmatch(r'[A-Z]{3}').all(), 'Invalid or missing iso3')
+    require(pd.api.types.is_numeric_dtype(frame.year), 'Year must be numeric')
+    require(frame.year.notna().all() and frame.year.isin(YEARS).all(), 'Year outside the analysis period or not an integer')
+    require(not frame.duplicated(['iso3', 'year']).any(), 'Duplicate iso3/year observations')
+    for column in ['country', 'region', 'income_group']:
+        require(frame[column].notna().all() and frame[column].astype(str).str.strip().ne('').all(), f'Missing metadata: {column}')
+    for column in source_columns + (derived_columns if derived else []):
+        require(pd.api.types.is_numeric_dtype(frame[column]), f'Non-numeric column: {column}')
+        require(np.isfinite(frame[column].dropna()).all(), f'Non-finite values: {column}')
+    require(frame[source_columns].notna().any(axis=1).all(), 'Observation with no source values')
+    for column in ['age_0_14', 'age_15_64', 'age_65_plus', 'lfpr', 'employment']:
+        require(frame[column].dropna().between(0, 100).all(), f'Percentage out of range: {column}')
+    for column in ['population', 'gdp_ppp']:
+        require(frame[column].dropna().gt(0).all(), f'Non-positive values: {column}')
+    require(frame.fertility.dropna().between(0, 12).all(), 'Fertility out of range')
+    age_error = frame[['age_0_14', 'age_15_64', 'age_65_plus']].sum(axis=1, min_count=3).sub(100).abs()
+    require(not age_error.gt(0.15).any(), 'Age shares do not sum to 100 within 0.15 pp')
+    require(not (frame.employment - frame.lfpr).gt(0.05).any(), 'Employment exceeds labor participation')
+    if derived:
+        expected = add_features(frame)
+        for column in derived_columns:
+            require(np.allclose(frame[column], expected[column], rtol=1e-9, atol=1e-8, equal_nan=True), f'Derived formula or missingness mismatch: {column}')
+    return {'rows': len(frame), 'economies': int(frame.iso3.nunique()), 'year_min': int(frame.year.min()), 'year_max': int(frame.year.max()), 'source_indicators': len(source_columns), 'derived_formulas_checked': len(derived_columns) if derived else 0}
+
 def read_pages(stem):
     files = sorted((p for p in (ROOT / 'data/raw').glob(stem + '_p*.json') if re.fullmatch(re.escape(stem) + r'_p\d+\.json', p.name)), key=lambda p: int(p.stem.rsplit('p', 1)[1]))
     if not files:
         raise FileNotFoundError(f'No cached pages for {stem}; run acquire.py explicitly')
     payloads = [json.loads(p.read_text('utf-8')) for p in files]
+    require(all(isinstance(p, list) and len(p) == 2 and isinstance(p[0], dict) and (p[1] is None or isinstance(p[1], list)) for p in payloads), f'Malformed cached API pages: {stem}')
+    require(all(p[0].get('pages') == payloads[0][0].get('pages') and p[0].get('total') == payloads[0][0].get('total') for p in payloads), f'Inconsistent API page headers: {stem}')
     require(len(payloads) == int(payloads[0][0]['pages']), f'Incomplete pages: {stem}')
     require([int(p[0]['page']) for p in payloads] == list(range(1,len(payloads)+1)), f'Nonconsecutive pages: {stem}')
     rows = [row for payload in payloads for row in (payload[1] or [])]
@@ -24,8 +65,13 @@ def read_pages(stem):
 
 def verify_snapshot():
     manifest = json.loads((ROOT / 'data/metadata/source_manifest.json').read_text('utf-8'))
+    require(bool(manifest['files']), 'Empty source manifest')
+    require(len({item['path'] for item in manifest['files']}) == len(manifest['files']), 'Duplicate manifest paths')
     for item in manifest['files']:
-        with (ROOT / item['path']).open('rb') as source:
+        path = (ROOT / item['path']).resolve()
+        require(path.is_relative_to((ROOT / 'data/raw').resolve()), f'Source path outside data/raw: {item["path"]}')
+        require(path.stat().st_size == item['bytes'], f'Snapshot byte count mismatch: {item["path"]}')
+        with path.open('rb') as source:
             actual = hashlib.file_digest(source, 'sha256').hexdigest()
         require(actual == item['sha256'], f'Snapshot checksum mismatch: {item["path"]}')
     return manifest
@@ -101,7 +147,9 @@ def main():
     if (master.employment - master.lfpr).gt(0.05).any(): errors.append('employment_exceeds_lfpr')
     require(not errors, f'Invalid source values: {errors}')
     master = add_features(master)
-    master.to_csv(ROOT / 'data/processed/master.csv', index=False, float_format='%.12g')
+    validate_master(master)
+    # Preserve the delivered byte-level provenance on Windows and Linux alike.
+    master.to_csv(ROOT / 'data/processed/master.csv', index=False, float_format='%.12g', lineterminator='\r\n')
     pd.concat(all_ranges).to_csv(ROOT / 'data/metadata/full_published_coverage.csv', index=False)
     write_json(ROOT / 'data/metadata/indicator_metadata.json', dictionary)
     gdp_title = next(d['name'] for d in dictionary if d['variable'] == 'gdp_ppp')

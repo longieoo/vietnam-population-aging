@@ -8,7 +8,7 @@ const sign=v=>M.valid(v)?(v>0?'+':'')+n(v):'Không có dữ liệu';
 const pct=v=>M.valid(v)?n(v)+'%':'Không có dữ liệu';
 const palette=['#39789b','#8b62a6','#009e73','#ad7d00','#5961a8','#ac5f7f'];
 const color=c=>payload.colors[c]||palette[[...c].reduce((s,x)=>s+x.charCodeAt(0),0)%palette.length];
-let view='overview',compare=['VNM','THA','IDN','JPN','KOR'],metric='age_65_plus',threshold=10,baseline='median',periodStart=2010,selectedSource='a',detailCode=null;
+let view='overview',compare=['VNM','THA','IDN','JPN','KOR'],metric='age_65_plus',threshold=10,baseline='median',periodStart=2010,selectedSource='a',detailCode=null,sourcePage=0;
 const sources={};
 const fieldNames={iso3:'Mã',country:'Quốc gia',year:'Năm',region:'Vùng',population:'Dân số (người)',age_0_14:'0–14 (%)',age_15_64:'15–64 (%)',age_65_plus:'65+ (%)',population_65_plus:'65+ (người)',gdp_ppp:'GDP PPP/người',lfpr:'LFPR 15+ (%)',employment:'Có việc làm 15+ (%)',aging_index:'65+ /100 trẻ em',potential_support_ratio:'15–64 /1 người 65+',child_dependency:'Trẻ em /100 người 15–64',old_dependency:'65+ /100 người 15–64',total_dependency:'Phụ thuộc /100 người 15–64',annual_change_pp:'Thay đổi/năm (điểm %)',threshold:'Ngưỡng (%)',status:'Trạng thái'};
 countries.forEach(([c,name])=>el('country').add(new Option(name,c)));el('country').value='VNM';
@@ -32,7 +32,8 @@ function options(label,id,values,current,handler){
 function plot(slot,title,note,data,layout,sourceRows,columns,clickable=false){
  el('title-'+slot).textContent=title;el('note-'+slot).textContent=note;
  sources[slot]={title,note,rows:sourceRows,columns};
- const target=el('chart-'+slot);
+ const target=el('chart-'+slot);target.setAttribute('role','img');target.setAttribute('aria-label',title+'. '+note+'. Dữ liệu tương ứng nằm trong bảng bên dưới.');
+ if(!data.some(t=>(t.orientation==='h'?(t.x||[]):(t.y||[])).some(M.valid)||(t.z||[]).flat().some(M.valid))){layout={...layout,annotations:[{text:'Không có dữ liệu cho phạm vi đã chọn',xref:'paper',yref:'paper',x:.5,y:.5,showarrow:false,font:{size:14,color:'#536577'}}]};}
  const base={font:{family:'Arial',size:12,color:'#172b3a'},margin:{t:20,l:65,r:20,b:65},paper_bgcolor:'white',plot_bgcolor:'white',legend:{orientation:'h',y:1.15},hovermode:'closest',autosize:true};
  Plotly.react(target,data,{...base,...layout},{responsive:true,displaylogo:false,displayModeBar:false}).then(()=>{
   target.removeAllListeners('plotly_click');
@@ -42,12 +43,14 @@ function plot(slot,title,note,data,layout,sourceRows,columns,clickable=false){
 function line(c,s,key){return {x:s.map(r=>r.year),y:s.map(r=>r[key]),customdata:s.map(r=>r.iso3),name:labels[c],mode:s.length===1?'markers':'lines',connectgaps:false,line:{color:color(c),width:c===el('country').value?3:2},hovertemplate:labels[c]+'<br>Năm %{x}: %{y:,.2f}<extra></extra>'};}
 function bars(sampleRows,key){return [{x:sampleRows.map(r=>r[key]),y:sampleRows.map(r=>labels[r.iso3]),customdata:sampleRows.map(r=>r.iso3),type:'bar',orientation:'h',marker:{color:sampleRows.map(r=>color(r.iso3))},hovertemplate:'%{y}<br>%{x:,.2f}<extra></extra>'}];}
 function crossData(s,x,y){return [{x:s.map(r=>r[x]),y:s.map(r=>r[y]),customdata:s.map(r=>r.iso3),text:s.map(r=>labels[r.iso3]),type:'scatter',mode:'markers',marker:{color:s.map(r=>compare.includes(r.iso3)?color(r.iso3):'#b0bfcb'),size:s.map(r=>compare.includes(r.iso3)?11:7),symbol:s.map(r=>r.iso3===el('country').value?'diamond':'circle')},hovertemplate:'%{text}<br>x: %{x:,.2f}<br>y: %{y:.2f}<extra></extra>'}];}
-function source(slot=selectedSource){
- selectedSource=slot;const s=sources[slot];el('source-title').textContent='Dữ liệu · '+s.title;
- el('source-caption').textContent=s.note+' Hiển thị '+Math.min(50,s.rows.length)+' / '+s.rows.length+' dòng; CSV chứa toàn bộ các dòng này. Snapshot '+payload.snapshot+'.';
+function source(slot=selectedSource,keepPage=false){
+ if(!keepPage||slot!==selectedSource)sourcePage=0;selectedSource=slot;const s=sources[slot];el('source-title').textContent='Dữ liệu · '+s.title;
+ const page=M.page(s.rows,sourcePage);sourcePage=page.index;
+ el('source-caption').textContent=s.note+' '+s.rows.length+' dòng; CSV chứa toàn bộ phạm vi biểu đồ. Snapshot '+payload.snapshot+'.';
+ el('source-page').textContent='Trang '+(page.index+1)+' / '+page.count+' · '+page.total+' dòng';el('source-prev').disabled=page.index===0;el('source-next').disabled=page.index+1===page.count;
  el('source-head').replaceChildren();el('source-body').replaceChildren();const tr=document.createElement('tr');
- for(const c of s.columns){const th=document.createElement('th');th.textContent=fieldNames[c]||c;tr.append(th);}el('source-head').append(tr);
- for(const r of s.rows.slice(0,50)){const tr=document.createElement('tr');for(const c of s.columns){const td=document.createElement('td');td.textContent=c==='year'?String(r[c]??'—'):typeof r[c]==='number'?n(r[c],3):(r[c]??'—');tr.append(td);}el('source-body').append(tr);}
+ for(const c of s.columns){const th=document.createElement('th');th.scope='col';th.textContent=fieldNames[c]||c;tr.append(th);}el('source-head').append(tr);
+ for(const r of page.rows){const tr=document.createElement('tr');for(const c of s.columns){const td=document.createElement('td');td.textContent=c==='year'?String(r[c]??'—'):typeof r[c]==='number'?n(r[c],3):(r[c]??'—');tr.append(td);}el('source-body').append(tr);}
 }
 function download(slot){
  const s=sources[slot],blob=new Blob([M.csv(s.rows,s.columns)],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
@@ -57,19 +60,19 @@ function download(slot){
 function detail(){
  if(!detailCode)return;const s=series(detailCode,+el('year').value);el('detail').hidden=false;el('detail-title').textContent=labels[detailCode]+' · tỷ trọng 65+';
  Plotly.react(el('detail-chart'),[line(detailCode,s,'age_65_plus')],{margin:{t:20,l:55,r:20,b:45},xaxis:{title:{text:'Năm'}},yaxis:{title:{text:'% tổng dân số'}},showlegend:false,font:{family:'Arial'}},{responsive:true,displayModeBar:false});
- el('detail').scrollIntoView({behavior:'smooth',block:'nearest'});
+ el('detail').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});
 }
 function render(){
  const year=+el('year').value,code=el('country').value,region=el('region').value,focus=series(code,year),current=focus.find(r=>r.year===year),first=focus.find(r=>r.year===1991),selected=uniqueCodes();
  const slice=M.sample(rows,year,region),history=selected.flatMap(c=>series(c,year));
- el('yearText').value=year;chips();el('extras').replaceChildren();el('status').textContent='';
+ el('yearText').value=year;el('year').setAttribute('aria-valuetext',String(year));chips();el('extras').replaceChildren();el('status').textContent='';
  el('card-d').hidden=view!=='aging';
  el('dashboard').setAttribute('aria-labelledby','tab-'+view);
  el('scope').textContent=labels[code]+' · năm '+year+'. Lịch sử quốc gia: 1991–'+year+'. Vùng so sánh chỉ áp dụng mẫu lát cắt, tốc độ vùng và mốc già hóa; không loại quốc gia đã chọn khỏi chuỗi lịch sử.';
  const common=['iso3','country','year'];
  const oldChange=M.change(first,current,'age_65_plus');
  if(view==='overview'){
-  kpis([['Dân số',n(current.population/1e6)+' triệu','Năm '+year],['Dân số 65+',n(current.age_65_plus)+'%',sign(oldChange)+' điểm % so với 1991'],['Số người 65+',n(current.population_65_plus/1e6)+' triệu','Ước tính từ dân số × tỷ trọng 65+'],['Tỷ lệ phụ thuộc',n(current.total_dependency),'Trên 100 người 15–64; '+sign(M.change(first,current,'total_dependency'))+' so với 1991']]);
+  kpis([['Dân số',n(M.scaled(current.population,1e6))+' triệu','Năm '+year],['Dân số 65+',pct(current.age_65_plus),sign(oldChange)+' điểm % so với 1991'],['Số người 65+',n(M.scaled(current.population_65_plus,1e6))+' triệu','Ước tính từ dân số × tỷ trọng 65+'],['Tỷ lệ phụ thuộc',n(current.total_dependency),'Trên 100 người 15–64; '+sign(M.change(first,current,'total_dependency'))+' so với 1991']]);
   const bm=M.benchmark(slice,'age_65_plus');
   el('finding').textContent=labels[code]+' có '+n(current.age_65_plus)+'% dân số 65+; trung vị '+n(bm.median)+'% của '+bm.n+'/'+bm.total+' nền kinh tế trong vùng so sánh năm '+year+'. Mức tổng hợp theo dân số trên cùng mẫu là '+n(bm.weighted)+'%.';
   const ageKeys=['age_0_14','age_15_64','age_65_plus'],ageColors=['#6aaf9d','#39789b','#c54b27'];
@@ -102,7 +105,7 @@ function render(){
   options('Mốc tỷ trọng 65+','threshold',[[8,'8%'],[10,'10%'],[12,'12%']],String(threshold),v=>{threshold=+v;render();});
   const sample=M.pair(slice,'gdp_ppp','age_65_plus').filter(r=>r.gdp_ppp>0),corr=M.correlation(sample,'gdp_ppp','age_65_plus',true);
   const codes=new Set(M.sample(rows,2023,region).map(r=>r.iso3)),t=M.thresholdSample(payload.crossings,threshold,codes),eligible=t.eligible.sort((a,b)=>a.gdp_ppp-b.gdp_ppp),vn=t.all.find(r=>r.iso3===code);
-  kpis([['GDP/người PPP',n(current.gdp_ppp),'Đô la quốc tế, giá '+payload.price_base],['Tỷ trọng 65+',n(current.age_65_plus)+'%','Quốc gia trọng tâm · '+year],['Mẫu GDP–già hóa',sample.length+'/'+slice.length,'Nền kinh tế đủ hai biến · '+year],['Tương quan Pearson',n(corr),'log GDP/người với tỷ trọng 65+']]);
+  kpis([['GDP/người PPP',n(current.gdp_ppp),'Đô la quốc tế, giá '+payload.price_base],['Tỷ trọng 65+',pct(current.age_65_plus),'Quốc gia trọng tâm · '+year],['Mẫu GDP–già hóa',sample.length+'/'+slice.length,'Nền kinh tế đủ hai biến · '+year],['Tương quan Pearson',n(corr),'log GDP/người với tỷ trọng 65+']]);
   el('finding').textContent='Tương quan mô tả năm '+year+' là '+n(corr)+' trên '+sample.length+' nền kinh tế. Tại mốc '+threshold+'%, '+labels[code]+': '+(vn?.status==='observed'?'lần vượt quan sát năm '+vn.year:vn?.status==='already_above'?'đã ở trên mốc khi bắt đầu cửa sổ':'chưa có lần vượt đủ điều kiện trong 1991–2023')+'. Không xác định quan hệ nhân quả hoặc tiêu chuẩn “giàu”.';
   plot('a','Thu nhập và tỷ trọng 65+','Năm '+year+' · n='+sample.length+'/'+slice.length+' · trục GDP log · bấm điểm để xem lịch sử',crossData(sample,'gdp_ppp','age_65_plus'),{xaxis:{type:'log',title:{text:'GDP PPP/người, giá '+payload.price_base}},yaxis:{title:{text:'65+ (% tổng dân số)'}}},sample,[...common,'gdp_ppp','age_65_plus'],true);
   plot('b','Quỹ đạo thu nhập–già hóa','Quốc gia đã chọn · 1991–'+year+' · GDP giá cố định; không nối qua thiếu',selected.map(c=>{const s=series(c,year);return {x:s.map(r=>r.gdp_ppp),y:s.map(r=>r.age_65_plus),text:s.map(r=>r.year),name:labels[c],mode:'lines+markers',connectgaps:false,line:{color:color(c)},marker:{size:4},hovertemplate:labels[c]+' · %{text}<br>GDP: %{x:,.0f}<br>65+: %{y:.2f}%<extra></extra>'};}),{xaxis:{type:'log',title:{text:'GDP PPP/người'}},yaxis:{title:{text:'65+ (%)'}}},history,[...common,'gdp_ppp','age_65_plus']);
@@ -119,11 +122,16 @@ function render(){
  }
  source();if(detailCode)detail();
 }
-document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{view=b.dataset.view;document.querySelectorAll('[data-view]').forEach(x=>x.setAttribute('aria-selected',String(x===b)));selectedSource='a';detailCode=null;el('detail').hidden=true;render();});
-document.querySelectorAll('[data-source]').forEach(b=>b.onclick=()=>{source(b.dataset.source);el('source-title').scrollIntoView({behavior:'smooth'});});
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{view=b.dataset.view;document.querySelectorAll('[data-view]').forEach(x=>{x.setAttribute('aria-selected',String(x===b));x.tabIndex=x===b?0:-1;});selectedSource='a';detailCode=null;el('detail').hidden=true;render();});
+document.querySelectorAll('[data-source]').forEach(b=>b.onclick=()=>{source(b.dataset.source);el('source-title').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});
 document.querySelectorAll('[data-export]').forEach(b=>b.onclick=()=>download(b.dataset.export));
 ['year','region','country'].forEach(id=>el(id).addEventListener(id==='year'?'input':'change',render));
 el('add-country').onchange=()=>{if(el('add-country').value&&compare.length<6)compare.push(el('add-country').value);render();};
 el('reset').onclick=()=>{el('country').value='VNM';el('year').value='2023';el('region').value='All';compare=['VNM','THA','IDN','JPN','KOR'];metric='age_65_plus';threshold=10;baseline='median';periodStart=2010;detailCode=null;el('detail').hidden=true;render();};
 el('close-detail').onclick=()=>{detailCode=null;el('detail').hidden=true;};
 render();
+
+const tabs=[...document.querySelectorAll('[data-view]')];
+tabs.forEach((tab,index)=>tab.addEventListener('keydown',event=>{let next;if(event.key==='ArrowRight')next=(index+1)%tabs.length;else if(event.key==='ArrowLeft')next=(index+tabs.length-1)%tabs.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=tabs.length-1;else return;event.preventDefault();tabs[next].focus();tabs[next].click();}));
+el('source-prev').onclick=()=>{sourcePage--;source(selectedSource,true);};
+el('source-next').onclick=()=>{sourcePage++;source(selectedSource,true);};

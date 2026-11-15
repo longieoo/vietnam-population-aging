@@ -2,6 +2,7 @@
 import json
 import pandas as pd
 from config import ROOT, format_number as f
+from prepare import require
 
 def main():
     table=ROOT/'outputs/tables'
@@ -10,7 +11,12 @@ def main():
     focal=pd.read_csv(table/'focal_series.csv'); end=focal[focal.year.eq(2023)].set_index('iso3')
     vn=focal[focal.iso3.eq('VNM')].set_index('year')
     crossings=pd.read_csv(table/'threshold_crossings.csv')
-    r=s['robustness']
+    # Select by semantic keys so harmless table sorting cannot swap findings.
+    indexed = {(row['analysis'], row['restriction']): row for row in s['robustness']}
+    require(len(indexed) == len(s['robustness']), 'Duplicate robustness sample keys')
+    r = [indexed[(analysis, restriction)]
+         for analysis in ['gdp_aging_2023', 'labor_2023']
+         for restriction in ['all', 'trim_5_95', 'exclude_population_under_1m']]
     # Findings retain their period, sample, source tables and limitations.
     insights=[
       {'id':'I1','finding':f'Tỷ trọng 65+ của Việt Nam tăng từ {f(a["age_65_plus"])}% lên {f(b["age_65_plus"])}%, tăng {f(s["vietnam_old_share_change_pp"])} điểm phần trăm; số người 65+ tăng từ {f(a["population_65_plus"]/1e6)} lên {f(b["population_65_plus"]/1e6)} triệu.', 'scope':'Việt Nam, 1991 và 2023','sample':'Hai năm đủ dân số và cơ cấu tuổi','tables':'focal_series.csv; analysis_summary.json','figures':'01, 02','interpretation':'Tăng quy mô dân số và thay đổi cơ cấu cùng làm tăng số người cao tuổi.','limitation':'Số người 65+ được suy ra từ hai chỉ tiêu WDI, không phải số đếm độc lập.','implication':'Cần xem đồng thời tỷ trọng và quy mô khi thảo luận nhu cầu chăm sóc.'},

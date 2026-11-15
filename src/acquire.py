@@ -3,17 +3,37 @@ import hashlib
 import json
 import time
 import urllib.request
+import urllib.error
+import os
+import tempfile
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor
 from config import ROOT, INDICATORS, ensure_dirs
 
 API = 'https://api.worldbank.org/v2/'
 
+def atomic_write(path, raw):
+    """Publish complete cache files; interrupted downloads never become snapshots."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as stream:
+            temporary = stream.name
+            stream.write(raw)
+        os.replace(temporary, path)
+    finally:
+        if temporary and os.path.exists(temporary):
+            os.unlink(temporary)
+
 def fetch(url, path):
     receipt = path.with_suffix(path.suffix + '.receipt.json')
     if path.exists() and receipt.exists():
         raw = path.read_bytes()
         info = json.loads(receipt.read_text('utf-8'))
+        if info.get('url') != url:
+            raise ValueError(f'Cache URL mismatch: {path}; use a fresh snapshot directory')
+        if info.get('bytes') != len(raw):
+            raise ValueError(f'Cache byte count mismatch: {path}')
         if hashlib.sha256(raw).hexdigest() != info['sha256']:
             raise ValueError(f'Cache checksum mismatch: {path}')
         return raw, info
@@ -24,10 +44,10 @@ def fetch(url, path):
             with urllib.request.urlopen(request, timeout=90) as response:
                 raw = response.read()
             info = {'url': url, 'retrieved_utc': datetime.now(timezone.utc).isoformat(), 'sha256': hashlib.sha256(raw).hexdigest(), 'bytes': len(raw), 'path': str(path.relative_to(ROOT)).replace('\\', '/')}
-            path.write_bytes(raw)
-            receipt.write_text(json.dumps(info, indent=2), 'utf-8')
+            atomic_write(path, raw)
+            atomic_write(receipt, json.dumps(info, indent=2).encode('utf-8'))
             return raw, info
-        except Exception as exc:
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:
             error = exc
             if attempt < 3:
                 time.sleep(2 ** attempt)
@@ -43,7 +63,12 @@ def paginated(endpoint, stem, params=''):
         if not isinstance(payload, list) or len(payload) != 2 or not isinstance(payload[0], dict) or 'pages' not in payload[0]:
             raise ValueError(f'Invalid API response: {url}: {str(payload)[:300]}')
         header, rows = payload
-        pages = int(header['pages'])
+        reported_pages = int(header['pages'])
+        if int(header.get('page', 0)) != page or reported_pages < page or (rows is not None and not isinstance(rows, list)):
+            raise ValueError(f'Invalid pagination metadata: {stem}, page {page}')
+        if page > 1 and reported_pages != pages:
+            raise ValueError('API page count changed during pagination; use a fresh snapshot directory')
+        pages = reported_pages
         if expected is None:
             expected = int(header['total'])
         if int(header['total']) != expected:
