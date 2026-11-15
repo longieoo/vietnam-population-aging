@@ -46,13 +46,13 @@ jobs:
       - name: Test dashboard in Chromium
         run: python scripts/check_dashboard.py --screenshots work/browser
       - name: Create verified release
-        run: python run.py package --output ../vietnam-population-aging.zip
+        run: python run.py package --output "${{ runner.temp }}/vietnam-population-aging.zip"
       - name: Retain release and validation receipts
         uses: actions/upload-artifact@v4
         with:
           name: population-aging-verified
           path: |
-            ../vietnam-population-aging.zip
+            ${{ runner.temp }}/vietnam-population-aging.zip
             outputs/tables/delivery_validation.json
             work/browser/
             work/logs/
